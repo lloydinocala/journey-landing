@@ -1,236 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Journey — Field Service Software for HVAC Contractors</title>
-<meta name="description" content="The complete, AI-forward field service platform for HVAC contractors of every size — instant estimates, Good/Better/Best selling, AI marketing, and all-in-one operations, built by an active contractor.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='4' y='4' width='92' height='92' rx='24' fill='%23E8F6FE' stroke='%2329B6F6' stroke-width='6'/><text x='50' y='74' font-size='66' font-weight='800' fill='%231592c9' text-anchor='middle' font-family='sans-serif'>J</text></svg>">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journey-HVAC — From Surviving to Thriving</title>
+<meta name="description" content="Journey-HVAC is AI-forward field service software built to give the small HVAC shop the advantages to compete — scheduling, dispatch, invoicing, inventory, payroll & HR, reporting, and more.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='4' y='4' width='92' height='92' rx='24' fill='%230C2A47'/><text x='50' y='74' font-size='66' font-weight='800' fill='%2300B0F0' text-anchor='middle' font-family='serif'>J</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&family=Archivo+Black&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0C2A47; --navy2:#0A2036; --ink:#0C2A47; --azure:#29B6F6; --azure-d:#1592c9;
-    --bg:#F4F9FD; --card:#fff; --line:#DCEAF4; --mute:#5C7590; --gold:#F2B441;
+    --navy:#163E64; --navy-d:#0C2A47; --cyan:#00B0F0; --blue:#0070C0; --banner:#053CEB;
+    --gray:#F2F2F2; --peek:#A6CAEC; --price:#DCEAF7; --label:#CAEEFB; --ink:#1E2A36; --mute:#5C6B7A;
+    --serif:'Times New Roman',Times,Georgia,serif; --sans:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-  .btn{display:inline-block;background:var(--azure);color:#fff;font-weight:700;font-size:15px;padding:14px 26px;border-radius:12px;border:none;cursor:pointer;transition:transform .12s,box-shadow .2s;box-shadow:0 8px 20px rgba(41,182,246,.32)}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(41,182,246,.42)}
-  .btn.ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);box-shadow:none}
+  body{font-family:var(--sans);color:var(--ink);background:var(--gray);-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
-  header{position:sticky;top:0;z-index:20;background:rgba(12,42,71,.96);backdrop-filter:blur(6px)}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .brand{display:flex;align-items:center;gap:11px;color:#fff}
-  .brand img{width:40px;height:40px}
-  .brand b{font-size:21px;font-weight:800;letter-spacing:.3px}
-  .brand small{display:block;font-size:9.5px;letter-spacing:2px;color:#8Fc6e6;text-transform:uppercase;font-weight:600;margin-top:-3px}
-  header .btn{padding:10px 18px;font-size:14px}
+  /* Announcement banner (managed in Journey → Admin → Website Announcement) */
+  #announce{display:none;background:var(--banner);color:#fff;text-align:center;font-weight:700;font-size:16px;padding:10px 16px}
+  #announce a{color:#fff;margin-left:8px;text-decoration:underline}
 
-  .hero{background:linear-gradient(160deg,#0C2A47,#0A2036);color:#fff;padding:70px 0 74px;text-align:center;position:relative;overflow:hidden}
-  .hero img.logo{width:120px;height:120px;margin-bottom:22px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))}
-  .hero h1{font-size:clamp(30px,5vw,52px);font-weight:800;line-height:1.1;max-width:900px;margin:0 auto 18px}
-  .hero h1 span{color:var(--azure)}
-  .hero p.sub{font-size:clamp(16px,2.2vw,20px);color:#C6DBEC;max-width:720px;margin:0 auto 30px;font-weight:400}
-  .hero .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
-  .hero .trust{margin-top:26px;font-size:13.5px;color:#8FB4D0;position:relative;z-index:2}
+  /* Hero */
+  .hero{position:relative;background:#0a1626}
+  .hero-stage{position:relative;max-width:1600px;margin:0 auto;aspect-ratio:2400/894;background:url(hero.jpg) center/100% 100% no-repeat;container-type:inline-size}
+  .hero-stage .tag{position:absolute;left:41.3%;top:13.2%;color:#fff;font-weight:700;font-size:.62cqw;letter-spacing:.01em}
+  .hero-title{position:absolute;left:52.3%;top:13.4%;transform:translateX(-50%);text-align:center;white-space:nowrap;line-height:1}
+  .wordmark{display:block;font-size:3.64cqw;line-height:1.05}
+  .wordmark .j{font-family:var(--serif);font-weight:700;color:var(--cyan)}
+  .wordmark .h{font-family:'Archivo Black','Arial Black',Arial,sans-serif;font-size:.82em;color:#fff;-webkit-text-stroke:.03em var(--cyan);margin-left:.15em}
+  .tagline{display:block;font-family:var(--serif);font-weight:700;font-size:2.2cqw;color:#fff;-webkit-text-stroke:.02em var(--cyan);margin-top:.35cqw}
+  .hero-head{position:absolute;left:50.6%;top:82.4%;transform:translateX(-50%);white-space:nowrap;text-align:center}
+  .hero-head h2{font-weight:800;font-size:2.65cqw;color:#fff;line-height:1.1}
+  .hero-head h2 em{color:#FFFF00}
+  .hero-head .strip{font-weight:700;font-size:.99cqw;color:#FFFF00;margin-top:.15cqw;padding-left:4cqw;letter-spacing:.01em}
+  .hero-mobile{display:none}
 
-  section{padding:66px 0}
-  .eyebrow{color:var(--azure-d);font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;text-align:center;margin-bottom:10px}
-  h2.sec{font-size:clamp(26px,3.6vw,38px);font-weight:800;text-align:center;max-width:760px;margin:0 auto 14px;line-height:1.15}
-  p.lead{text-align:center;color:var(--mute);font-size:17px;max-width:680px;margin:0 auto 44px}
+  /* AI Forward / Advantages */
+  .why{padding:30px 0 40px;background:var(--gray)}
+  .why .cols{display:grid;grid-template-columns:38fr 62fr;gap:28px;align-items:start}
+  .why h2{color:var(--blue);font-weight:700;font-size:32px;line-height:1.2;text-align:center;margin-bottom:10px}
+  .panel{background:#fff;padding:18px 22px;font-size:14.5px;min-height:100%}
+  .panel p{margin-bottom:12px}
+  .panel p:last-child{margin-bottom:0}
+  .soon{color:var(--blue);font-style:italic;text-decoration:underline;cursor:default;white-space:nowrap}
 
-  .why{background:#fff}
-  .why .inner{max-width:820px;margin:0 auto;text-align:center}
-  .why blockquote{font-size:clamp(20px,3vw,27px);font-weight:600;line-height:1.4;color:var(--navy);margin:0 0 20px}
-  .why blockquote span{color:var(--azure-d)}
-  .why p{color:var(--mute);font-size:16.5px}
+  /* Peek */
+  .peek{background:var(--peek);padding:36px 0 44px;text-align:center}
+  .peek h2{font-family:var(--serif);font-weight:700;font-size:34px;color:#111;margin-bottom:22px}
+  .peek video{width:100%;max-width:900px;display:block;margin:0 auto;background:#000;border-radius:2px;box-shadow:0 6px 24px rgba(0,0,0,.18)}
 
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  @media(max-width:820px){.grid{grid-template-columns:1fr}}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px}
-  .feat .ic{width:46px;height:46px;border-radius:12px;background:#E8F6FE;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-  .feat .ic svg{width:24px;height:24px;stroke:var(--azure-d)}
-  .feat h3{font-size:18px;font-weight:700;margin-bottom:8px}
-  .feat p{color:var(--mute);font-size:14.5px}
+  /* Features */
+  .features{background:var(--gray);padding:40px 0 46px}
+  .features h2{font-family:var(--serif);font-weight:700;font-size:34px;text-align:center;color:#111;margin-bottom:26px}
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .fcard{background:#fff;border-radius:14px;box-shadow:4px 5px 10px rgba(0,0,0,.18);padding:16px 22px 20px}
+  .fcard .lbl{background:var(--label);font-weight:700;text-align:center;font-size:15px;padding:6px 10px;width:68%;margin:0 auto 14px;letter-spacing:.02em}
+  .fcard ul{list-style:none;columns:2;column-gap:18px;font-family:'Open Sans',var(--sans);font-size:13px;color:#222}
+  .fcard li{padding:3px 0;break-inside:avoid}
+  .frow2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+  .fcard.more ul{columns:3}
+  .fcard.note{font-weight:700;font-size:14px;display:flex;flex-direction:column;justify-content:center;gap:12px}
 
-  .who{background:linear-gradient(160deg,#0C2A47,#0A2036);color:#fff;text-align:center}
-  .who h2{color:#fff}
-  .who p.lead{color:#C6DBEC}
-  .sizes{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-  .size{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px 26px;min-width:150px}
-  .size b{display:block;font-size:26px;font-weight:800;color:var(--azure)}
-  .size span{font-size:13.5px;color:#B9D2E6}
+  /* Join banner */
+  .join{background:var(--navy);color:#fff;text-align:center;padding:22px 16px}
+  .join h2{font-weight:700;font-size:30px;line-height:1.2}
+  .join p{font-size:22px}
 
-  .cta{background:#fff}
-  .form-card{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px;box-shadow:0 18px 48px rgba(12,42,71,.10)}
-  .form-card h2{font-size:26px;font-weight:800;margin-bottom:6px;text-align:center}
-  .form-card p.s{color:var(--mute);text-align:center;margin-bottom:24px;font-size:15px}
-  .field{margin-bottom:14px}
-  .field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:5px}
-  .field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1px solid #cdd9e6;border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--azure);box-shadow:0 0 0 3px rgba(41,182,246,.15)}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:560px){.row2{grid-template-columns:1fr}}
-  #submit{width:100%;margin-top:8px;padding:15px}
-  #formMsg{text-align:center;margin-top:14px;font-size:14.5px;font-weight:600;display:none}
-  .thanks{text-align:center;padding:20px 0}
-  .thanks .big{font-size:24px;font-weight:800;color:var(--azure-d);margin-bottom:8px}
-  .thanks p{color:var(--mute)}
+  /* Pricing */
+  .pricing{background:var(--price);padding:22px 0 50px}
+  .controls{display:flex;justify-content:center;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:26px}
+  .controls label{font-size:13px;margin-right:8px}
+  .controls select{font:600 13px var(--sans);color:var(--navy);padding:6px 12px;border:1px solid var(--navy);border-radius:4px;background:#fff;min-width:140px}
+  .toggle{display:inline-flex;border:1px solid var(--navy);border-radius:4px;overflow:hidden;background:#F2F2F2}
+  .toggle button{font:700 12.5px var(--sans);color:var(--navy);background:transparent;border:0;padding:7px 18px;cursor:pointer}
+  .toggle button.on{background:var(--navy);color:#fff}
+  .save{font-size:13px;font-weight:700;background:#F2F2F2;padding:4px 10px;border-radius:3px}
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:stretch}
+  .plan{position:relative;background:#fff;border-radius:22px;box-shadow:4px 6px 12px rgba(0,0,0,.18);padding:16px 18px 74px;text-align:center;display:flex;flex-direction:column}
+  .plan.feat{border:7px solid var(--navy)}
+  .plan h3{font-family:var(--serif);font-weight:700;font-size:27px;color:#111;line-height:1.2}
+  .seats{font-size:12.5px;color:var(--mute);font-weight:600;min-height:18px;margin-top:2px}
+  .price{font-family:var(--serif);font-weight:700;font-size:30px;color:#111;margin:14px 0 2px;min-height:40px;line-height:1.3}
+  .price small{font-size:16px;font-weight:400}
+  .price.na{font-family:var(--sans);font-size:15px;font-weight:700;color:var(--mute);line-height:1.35;display:flex;align-items:center;justify-content:center}
+  .billing{font-size:12px;color:var(--mute);min-height:18px}
+  .go{display:flex;justify-content:space-between;align-items:center;margin:12px auto 0;width:92%;font:700 15px var(--sans);color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:6px;padding:9px 12px;cursor:pointer;text-align:left}
+  .go::after{content:'⟶';font-size:18px;font-weight:400}
+  .go.solid{background:var(--navy);color:#fff}
+  .go[disabled]{opacity:.4;cursor:not-allowed}
+  .desc{border:1px solid #ddd;font-size:12.5px;color:#444;text-align:left;padding:10px 12px;margin:12px auto 0;width:92%}
+  .incl{list-style:none;margin-top:16px;font-size:12.5px;line-height:1.45;color:#1F3A5A}
+  .incl b{font-weight:700}
+  .incl span{color:#5f7488}
+  .talk img{width:84%;max-width:240px;margin:10px auto 8px;display:block;background:#163E64;border-radius:10px;padding:6px 8px}
+  .phone{font-weight:700;font-size:14px;color:#111;text-decoration:none;display:inline-block}
+  .or{font-weight:700;margin:4px 0}
+  .see{position:absolute;left:10px;right:10px;bottom:-14px;background:var(--navy);color:#fff;border:0;border-radius:6px;padding:9px 14px;text-align:left;font:700 14.5px/1.25 var(--sans);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;box-shadow:2px 4px 8px rgba(0,0,0,.25)}
+  .see::after{content:'⟶';font-size:20px;font-weight:400}
 
-  footer{background:#08192B;color:#8FB4D0;text-align:center;padding:34px 0;font-size:13.5px}
-  footer .brand{justify-content:center;margin-bottom:10px}
-  footer b{color:#fff}
+  footer{background:#08192B;color:#8FB4D0;text-align:center;padding:26px 16px;font-size:13px}
+  footer a{color:#cfe3f3;margin:0 8px}
+
+  /* Sign-up / demo form */
+  dialog{border:0;border-radius:16px;padding:0;max-width:540px;width:calc(100% - 32px);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+  dialog::backdrop{background:rgba(8,25,43,.6)}
+  .fm{padding:26px 26px 22px}
+  .fm h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:4px}
+  .fm .ctx{font-size:13.5px;color:var(--mute);margin-bottom:16px}
+  .fm .r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fm label{display:block;font-size:12.5px;font-weight:600;color:var(--navy);margin:8px 0 4px}
+  .fm input,.fm textarea{width:100%;padding:10px 12px;border:1px solid #cdd9e6;border-radius:8px;font:15px var(--sans)}
+  .fm .acts{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+  .fm .acts button{font:700 15px var(--sans);border-radius:8px;padding:10px 18px;cursor:pointer;border:1.5px solid var(--navy)}
+  .fm .send{background:var(--navy);color:#fff}
+  .fm .cancel{background:#fff;color:var(--navy)}
+  #fmMsg{font-size:14px;font-weight:600;margin-top:10px;display:none}
+
+  @media (max-width:1020px){
+    .plans{grid-template-columns:repeat(2,1fr);row-gap:40px}
+    .fgrid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:760px){
+    .hero-stage .tag,.hero-title,.hero-head{display:none}
+    .hero-stage{background-image:url(hero-sm.jpg)}
+    .hero-mobile{display:block;background:#163E64;color:#fff;text-align:center;padding:22px 16px 18px}
+    .hero-mobile .tag{font-size:11px;font-weight:700;opacity:.9}
+    .hero-mobile .wordmark{font-size:44px}
+    .hero-mobile .tagline{font-size:24px;margin-top:4px}
+    .hero-mobile h2{font-weight:800;font-size:22px;line-height:1.2;margin-top:14px}
+    .hero-mobile h2 em{color:#FFFF00}
+    .hero-mobile .strip{color:#FFFF00;font-weight:700;font-size:12px;margin-top:8px}
+    .why .cols,.frow2{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr}
+    .plans{grid-template-columns:1fr}
+    .fcard.more ul{columns:2}
+    .join h2{font-size:23px}.join p{font-size:17px}
+    .why h2,.peek h2,.features h2{font-size:26px}
+    .fm .r2{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <a class="brand" href="#top">
-      <svg viewBox='0 0 100 100' style='width:40px;height:40px;' aria-label='Journey'><rect x='4' y='4' width='92' height='92' rx='24' fill='#E8F6FE' stroke='#29B6F6' stroke-width='5'/><text x='50' y='73' font-family="Poppins,sans-serif" font-size='66' font-weight='800' fill='#1592c9' text-anchor='middle'>J</text></svg>
-      <span><b>Journey</b><small>HVAC Software</small></span>
-    </a>
-    <a href="#access" class="btn">Request early access</a>
-  </div>
-</header>
+<div id="announce" role="status"></div>
 
+<!-- HERO -->
 <section class="hero" id="top">
-  <div class="wrap">
-    <svg viewBox='0 0 100 100' style='width:120px;height:120px;margin-bottom:22px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35));' aria-label='Journey'><rect x='4' y='4' width='92' height='92' rx='24' fill='#E8F6FE' stroke='#29B6F6' stroke-width='5'/><text x='50' y='73' font-family="Poppins,sans-serif" font-size='66' font-weight='800' fill='#1592c9' text-anchor='middle'>J</text></svg>
-    <h1>The complete HVAC platform — <span>built by a contractor, for contractors.</span></h1>
-    <p class="sub">Journey is AI-forward field service software for HVAC businesses of every size. Win more jobs with instant estimates and Good / Better / Best selling, put your marketing on autopilot, and run everything from dispatch to invoicing in one place.</p>
-    <div class="cta-row">
-      <a href="#access" class="btn">Request early access</a>
-      <a href="#features" class="btn ghost">See what it does</a>
+  <div class="hero-mobile">
+    <div class="tag">AI Forward Version</div>
+    <h1 class="wordmark"><span class="j">Journey</span><span class="h">HVAC</span></h1>
+    <span class="tagline">From Surviving to Thriving</span>
+    <h2>Built to give the <em>small shop</em> the advantages to compete*</h2>
+    <div class="strip">AI RECEPTIONIST* &nbsp;-&nbsp; SCHEDULING &nbsp;-&nbsp; DISPATCH &nbsp;-&nbsp; INVOICING &nbsp;-&nbsp; INVENTORY &nbsp;-&nbsp; PAYROLL &amp; HR &nbsp;-&nbsp; ADVANCED REPORTING &nbsp;-&nbsp; BOOKKEEPING*</div>
+  </div>
+  <div class="hero-stage" role="img" aria-label="Journey-HVAC on every device: Technician, Supervisor, Inventory, Customer, Desktop, Laptop and Systems Estimate apps">
+    <div class="tag">AI Forward Version</div>
+    <div class="hero-title" aria-hidden="true">
+      <span class="wordmark"><span class="j">Journey</span><span class="h">HVAC</span></span>
+      <span class="tagline">From Surviving to Thriving</span>
     </div>
-    <div class="trust">Built by an active HVAC contractor · For one-truck shops to multi-crew operations</div>
-    <img src="journey-showcase.jpg" alt="Journey across devices: tech app, supervisor app, customer app, dispatch calendar, and the estimate app" style="width:100%;max-width:1000px;margin:38px auto 0;display:block;border-radius:16px;box-shadow:0 26px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08);position:relative;z-index:2">
+    <div class="hero-head" aria-hidden="true">
+      <h2>Built to give the <em>small shop</em> the advantages to compete*</h2>
+      <div class="strip">AI RECEPTIONIST* &nbsp;-&nbsp; SCHEDULING &nbsp;-&nbsp; DISPATCH &nbsp;-&nbsp; INVOICING &nbsp;-&nbsp; INVENTORY &nbsp;-&nbsp; PAYROLL &amp; HR &nbsp;-&nbsp; &nbsp;ADVANCED REPORTING &nbsp;-&nbsp; &nbsp;BOOKKEEPING*</div>
+    </div>
   </div>
 </section>
 
-
+<!-- AI FORWARD + ADVANTAGES -->
 <section class="why">
-  <div class="wrap inner">
-    <div class="eyebrow">Why Journey</div>
-    <blockquote>Most shops duct-tape five different apps together to run the business. Journey is the <span>one complete platform</span> that does it all.</blockquote>
-    <p>Journey was built by an active HVAC contractor tired of juggling disconnected tools and paying enterprise prices for half a solution. So we built the complete platform — estimates, dispatch, invoicing, payments, and AI-powered marketing in one place — giving shops of every size the AI-forward tools the big players charge a fortune for, at a price that fits a real business.</p>
-  </div>
-</section>
-
-<section id="features">
-  <div class="wrap">
-    <div class="eyebrow">What it does</div>
-    <h2 class="sec">Everything to win the job and run the shop</h2>
-    <p class="lead">One platform, built for how HVAC contractors actually work.</p>
-    <div class="grid">
-      <div class="feat">
-        <div class="ic"><svg fill="none" stroke-width="1.9" viewBox="0 0 24 24"><path d="M4 5h16M4 12h10M4 19h7"/><circle cx="18" cy="17" r="3"/></svg></div>
-        <h3>Good / Better / Best estimates</h3>
-        <p>Turn every quote into a confident choice. Present three clear options that help customers say yes — and close at a higher ticket.</p>
+  <div class="wrap cols">
+    <div>
+      <h2>What is<br>"AI Forward" ?</h2>
+      <div class="panel">
+        <p>AI is changing every industry, and HVAC is ripe for change. Most contractor software was built a decade ago, and its makers are now trying to bolt AI onto the side. Journey-HVAC was built AI Forward from day one.</p>
+        <p>That means AI working throughout your business. It drafts marketing for you to approve, helps your techs read what a system is really telling them, and flags the jobs, customers, and dollars that would otherwise slip through the cracks. It works the way a sharp office manager and a seasoned lead tech would, but around the clock.</p>
+        <p>Honest by design: when Journey’s AI makes a call, it shows you the reading behind it. Nothing gets sent, posted, or sold without a human approving it. The big players have money and headcount. With Journey, you have AI that levels the field.</p>
       </div>
-      <div class="feat">
-        <div class="ic"><svg fill="none" stroke-width="1.9" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
-        <h3>Instant online estimates</h3>
-        <p>Let homeowners get a real, guaranteed price from your site or social — no appointment, no pressure. Win the job before a competitor calls back.</p>
-      </div>
-      <div class="feat">
-        <div class="ic"><svg fill="none" stroke-width="1.9" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
-        <h3>AI marketing on autopilot</h3>
-        <p>Your AI teammate drafts posts, review requests, and campaigns — even from your job photos. You approve; it runs while you work.</p>
-      </div>
-      <div class="feat">
-        <div class="ic"><svg fill="none" stroke-width="1.9" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
-        <h3>All-in-one operations</h3>
-        <p>Dispatch, scheduling, invoicing, payments, and QuickBooks sync — one platform, no double entry, no re-typing.</p>
-      </div>
-      <div class="feat">
-        <div class="ic"><svg fill="none" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Show your work</h3>
-        <p>Every recommendation shows the reading behind it — the tools can even say "your system is fine, buy nothing." Let the data make your case for you.</p>
-      </div>
-      <div class="feat">
-        <div class="ic"><svg fill="none" stroke-width="1.9" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 6a3 3 0 010 6M18 20c0-2-1-3.5-3-4.5"/></svg></div>
-        <h3>Any size, one platform</h3>
-        <p>From a single truck to a multi-crew operation — Journey scales with you, and the price fits a small shop's reality.</p>
+    </div>
+    <div>
+      <h2>*Built to give the small shop<br>the advantages to compete</h2>
+      <div class="panel">
+        <p>The big HVAC companies win on infrastructure, not skill. They have dispatchers, marketing departments, call centers, and warehouses. You have a few trucks, good techs, and a reputation you’ve earned one job at a time.</p>
+        <p>Or maybe you are just starting out and reality just hit you with impending competitive disadvantages.</p>
+        <p>Journey-HVAC closes that gap. It gives a two-truck shop and a ten-truck shop the same machinery the hundred-truck shops run on, with AI handling the work you’d otherwise need to hire for.</p>
+        <p><b>See what that looks like:</b></p>
+        <p><b>A field app your techs will actually use.</b> Job details, pricebooks, readings, and payments in one place on the truck. <span class="soon">See the field app →</span></p>
+        <p><b>Dispatch and scheduling that runs like a real office.</b> Even if your “office” is one person. <span class="soon">See dispatch →</span></p>
+        <p><b>Marketing that runs itself, with you in charge.</b> AI drafts the posts, you approve them, and Journey publishes. <span class="soon">See marketing →</span></p>
+        <p><b>Maintenance agreements that renew instead of quietly lapsing.</b> Recurring revenue the big shops are built on. <span class="soon">See maintenance plans →</span></p>
+        <p><b>A customer portal that looks like you’re the big company.</b> Customers can see their history, approve estimates, and pay online. <span class="soon">See the customer portal →</span></p>
+        <p>The big shops have had these advantages for years. Now you do too, and you keep doing the work the honest way.</p>
+        <p><a href="#peek" style="color:var(--blue)">[Take the tour →]</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="who">
+<!-- PEEK -->
+<section class="peek" id="peek">
   <div class="wrap">
-    <div class="eyebrow" style="color:#7FC6EC">Who it's for</div>
-    <h2 class="sec">HVAC contractors of every size</h2>
-    <p class="lead">Whether you run one truck or twenty, Journey gives you the AI-forward tools the big platforms charge a fortune for — designed for the way you actually run your business.</p>
-    <div class="sizes">
-      <div class="size"><b>1</b><span>Owner-operator, one truck</span></div>
-      <div class="size"><b>2–15</b><span>Growing crews</span></div>
-      <div class="size"><b>16+</b><span>Established operations</span></div>
+    <h2>Take a Peek Inside</h2>
+    <video controls preload="metadata" playsinline poster="peek-poster.jpg">
+      <source src="journey-tour.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<!-- FEATURES (moved above Pricing) -->
+<section class="features" id="features">
+  <div class="wrap">
+    <h2>163 Features, Features, Features ... and counting ...</h2>
+    <div class="fgrid">
+      <div class="fcard"><div class="lbl">ADMIN</div><ul>
+        <li>Admin</li><li>Announcements</li><li>Financing Central</li><li>Financing Options</li>
+        <li>Lender Directory</li><li>Organizations</li><li>Plans &amp; Entitlements</li><li>Settings</li></ul></div>
+      <div class="fcard"><div class="lbl">FIELD APP</div><ul>
+        <li>Chat with Quincy</li><li>Field App Settings</li><li>Field App — Job Cards</li><li>Field App — Schedule</li><li>Field Cycle Count</li><li>Field Follow-up Estimate</li>
+        <li>Field Manual</li><li>Field New Job</li><li>Field Service Estimate</li><li>Field System Estimate</li><li>My Records (Pay &amp; Benefits)</li><li>Receiving</li></ul></div>
+      <div class="fcard"><div class="lbl">DISPATCH</div><ul>
+        <li>Calendar</li><li>Call Console</li><li>Call Log</li><li>&nbsp;</li>
+        <li>Dispatch Map</li><li>Dispatch Station</li><li>Filter Orders</li><li>On-Call Schedule</li></ul></div>
+      <div class="fcard"><div class="lbl">INVENTORY CONTROL</div><ul>
+        <li>Cycle Counts</li><li>Vendor Invoices (A/P)</li><li>Vendors</li><li>Stock &amp; Receiving</li><li>Supplies Catalog</li><li>Tool Catalog</li>
+        <li>Purchases</li><li>Record Parts Used</li><li>Job Costing</li><li>Inventory Health</li><li>Purchase Orders</li><li>Inventory Settings</li></ul></div>
+      <div class="fcard"><div class="lbl">FLEET MANAGEMENT</div><ul>
+        <li>Vehicles</li><li>Repairs &amp; Cost</li><li>Routes &amp; GPS</li><li>Maintenance Due</li></ul></div>
+      <div class="fcard"><div class="lbl">JOBS &amp; CUSTOMERS</div><ul>
+        <li>Invoices</li><li>Job Estimates</li><li>Jobs</li><li>Jobs Dash</li><li>Jobs Management</li>
+        <li>System Estimates</li><li>608 Refrigeration Compliance</li><li>Res Flat Rate Pricebook</li><li>Res Systems Pricebook</li><li>Time &amp; Materials</li></ul></div>
+    </div>
+    <div class="frow2">
+      <div class="fcard more"><ul>
+        <li>Payroll</li><li>Human Resources</li><li>Certified Payroll</li>
+        <li>Warranty Registrations</li><li>Permits</li><li>PM Checklists</li>
+        <li>Maintenance Tiers</li><li>On-Call Schedule</li><li>To-Do List</li></ul></div>
+      <div class="fcard note">
+        <div>... and many, many more, all useful, all practical, all driven by AI for Compliance, Accuracy, and for Reminders.</div>
+        <div>163 Features so far, and more on the drawing board.&nbsp; It's time you had someone working for you instead of against you!</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cta" id="access">
+<!-- JOIN -->
+<section class="join">
+  <h2>Join Journey-HVAC for FREE for 14 days.&nbsp; Stay forever with a plan.</h2>
+  <p>No credit card required.</p>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
   <div class="wrap">
-    <div class="form-card">
-      <div id="formInner">
-        <h2>Request early access</h2>
-        <p class="s">Be among the first HVAC contractors to run your shop on Journey. Tell us a little about your business and we'll be in touch.</p>
-        <div class="row2">
-          <div class="field"><label>Name</label><input id="f_name" type="text" placeholder="Your name"></div>
-          <div class="field"><label>Company</label><input id="f_company" type="text" placeholder="Business name"></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label>Email *</label><input id="f_email" type="email" placeholder="you@company.com"></div>
-          <div class="field"><label>Phone</label><input id="f_phone" type="tel" placeholder="(000) 000-0000"></div>
-        </div>
-        <div class="field"><label>Company size</label>
-          <select id="f_size">
-            <option value="">Select…</option>
-            <option>Owner-operator (1 truck)</option>
-            <option>2–5</option>
-            <option>6–15</option>
-            <option>16+</option>
-          </select>
-        </div>
-        <div class="field"><label>Anything you'd like us to know?</label><textarea id="f_message" rows="3" placeholder="Optional"></textarea></div>
-        <button class="btn" id="submit">Request early access</button>
-        <div id="formMsg"></div>
+    <div class="controls">
+      <div><label for="team">Team size</label>
+        <select id="team">
+          <option value="solo">Just me +1</option>
+          <option value="t1">2-5 people</option>
+          <option value="t2">6-10 people</option>
+          <option value="t3">11-15 people</option>
+          <option value="big">16 or more</option>
+        </select></div>
+      <div class="toggle" role="group" aria-label="Billing">
+        <button data-bill="monthly">Monthly</button>
+        <button data-bill="commit">1-Yr Commitment</button>
+        <button data-bill="annual" class="on">Annual</button>
+      </div>
+      <span class="save">Save up to 25% with annual billing</span>
+    </div>
+
+    <div class="plans">
+      <div class="plan" data-plan="starter">
+        <h3>Pro Starter</h3>
+        <div class="seats"></div>
+        <div class="price"></div><div class="billing"></div>
+        <button class="go" data-go="Pro Starter">Get started</button>
+        <div class="desc">Perfect for the Solopreneur or Solo +1.&nbsp; Gives you Job Controls and Field Management so you can keep going.</div>
+        <ul class="incl">
+          <li><b>Desktop / Laptop / Tablet App</b></li>
+          <li><b>Field Supervisor App</b></li>
+          <li><b>Technician App</b> <span>(includes AI Diagnostics Assistance)</span></li>
+          <li><b>Connectivity to QuickBooks</b></li>
+          <li><b>AI Receptionist</b> <span>(Add-On)</span></li>
+          <li><b>Lite Payroll</b></li>
+        </ul>
+        <button class="see" data-see>See All Features<br>in the Pro Starter Plan</button>
+      </div>
+
+      <div class="plan feat" data-plan="growing">
+        <h3>Growing</h3>
+        <div class="seats"></div>
+        <div class="price"></div><div class="billing"></div>
+        <button class="go solid" data-go="Growing">Get started</button>
+        <ul class="incl">
+          <li><b>Desktop / Laptop / Tablet App</b></li>
+          <li><b>Field Supervisor App</b></li>
+          <li><b>Technician App</b> <span>(includes AI Diagnostics Assistance)</span></li>
+          <li><b>Customer App</b></li>
+          <li><b>Systems Estimate App</b></li>
+          <li><b>Connectivity to QuickBooks</b></li>
+          <li><b>Standard Payroll</b></li>
+          <li><b>Marketing Module</b> <span>(Add-On)</span></li>
+          <li><b>AI Receptionist</b> <span>(Add-On)</span></li>
+        </ul>
+        <button class="see" data-see>See All Features<br>in the Growing Plan</button>
+      </div>
+
+      <div class="plan" data-plan="ambitious">
+        <h3>Ambitious</h3>
+        <div class="seats"></div>
+        <div class="price"></div><div class="billing"></div>
+        <button class="go" data-go="Ambitious">Get started</button>
+        <ul class="incl">
+          <li><b>Desktop / Laptop / Tablet App</b></li>
+          <li><b>Field Supervisor App</b></li>
+          <li><b>Technician App</b> <span>(includes AI Diagnostics Assistance)</span></li>
+          <li><b>Customer App</b></li>
+          <li><b>Inventory App</b></li>
+          <li><b>Systems Estimate App</b></li>
+          <li><b>Connectivity to QuickBooks</b></li>
+          <li><b>Marketing Module</b></li>
+          <li><b>Premium Payroll</b></li>
+          <li><b>AI Receptionist</b> <span>(Add-On)</span></li>
+          <li><b>Journey Accounting</b> <span>(Add-On)</span></li>
+        </ul>
+        <button class="see" data-see>See All Features<br>in the Ambitious Plan</button>
+      </div>
+
+      <div class="plan talk" data-plan="established">
+        <h3>Established</h3>
+        <div class="seats">Unlimited Seats</div>
+        <img src="talk-to-us.png" alt="Talk to us — we'll listen">
+        <a class="phone" href="tel:+13524846341">📞 (352) 484-6341</a>
+        <div class="or">or</div>
+        <button class="go" data-demo>Book a Demo</button>
+        <ul class="incl">
+          <li><b>Desktop / Laptop / Tablet App</b></li>
+          <li><b>Field Supervisor App</b></li>
+          <li><b>Technician App</b> <span>(includes AI Diagnostics Assistance)</span></li>
+          <li><b>Customer App</b></li>
+          <li><b>Inventory App</b></li>
+          <li><b>Systems Estimate App</b></li>
+          <li><b>Connectivity to QuickBooks</b></li>
+          <li><b>Marketing Module</b></li>
+          <li><b>HR &amp; Premium Payroll</b></li>
+          <li><b>AI Receptionist</b> <span>(Add-On)</span></li>
+          <li><b>Journey Accounting</b></li>
+        </ul>
+        <button class="see" data-see>See All Features<br>in the Established Plan</button>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="brand"><svg viewBox='0 0 100 100' style='width:34px;height:34px;' aria-label='Journey'><rect x='4' y='4' width='92' height='92' rx='24' fill='#E8F6FE' stroke='#29B6F6' stroke-width='5'/><text x='50' y='73' font-family="Poppins,sans-serif" font-size='66' font-weight='800' fill='#1592c9' text-anchor='middle'>J</text></svg><span><b>Journey</b></span></div>
-    <div>AI-forward field service software for HVAC contractors.</div>
-    <div style="margin-top:6px">© 2026 Journey · a VentexIQ product</div>
-  </div>
+  <div>© 2026 Journey-HVAC · a VentexIQ product</div>
+  <div style="margin-top:8px"><a href="privacy.html">Privacy</a>·<a href="terms.html">Terms</a></div>
 </footer>
 
+<!-- Sign-up / demo form -->
+<dialog id="dlg">
+  <form class="fm" method="dialog" onsubmit="return false">
+    <h3 id="fmTitle">Start your free 14-day trial</h3>
+    <div class="ctx" id="fmCtx"></div>
+    <div id="fmBody">
+      <div class="r2">
+        <div><label for="f_name">Name</label><input id="f_name" autocomplete="name"></div>
+        <div><label for="f_company">Company</label><input id="f_company" autocomplete="organization"></div>
+      </div>
+      <div class="r2">
+        <div><label for="f_email">Email *</label><input id="f_email" type="email" autocomplete="email"></div>
+        <div><label for="f_phone">Phone</label><input id="f_phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <label for="f_message">Anything you'd like us to know?</label>
+      <textarea id="f_message" rows="3" placeholder="Optional"></textarea>
+      <div id="fmMsg"></div>
+      <div class="acts"><button type="button" class="cancel" id="fmCancel">Cancel</button><button type="button" class="send" id="fmSend">Send</button></div>
+    </div>
+  </form>
+</dialog>
+
 <script>
+  // ---- Pricing -------------------------------------------------------------
+  // Monthly = set price; 1-yr commitment = 15% off; Annual = 25% off (shown per month,
+  // billed annually). Discounted prices round to the nearest $5.
+  var PRICES = { starter:{solo:99}, growing:{t1:199,t2:249,t3:349}, ambitious:{t1:299,t2:349,t3:499} };
+  var SEATS = { solo:'Up to 2 Seats', t1:'Up to 5 Seats', t2:'Up to 10 Seats', t3:'Up to 15 Seats', big:'16+ Seats' };
+  var TEAM_LABEL = { solo:'Just me +1', t1:'2-5 people', t2:'6-10 people', t3:'11-15 people', big:'16 or more' };
+  var BILL_LABEL = { monthly:'Monthly, no commitment', commit:'Monthly, 1-year commitment', annual:'Annual' };
+  var state = { team:'solo', bill:'annual' };
+  var r5 = function(x){ return Math.round(x/5)*5; };
+  function priceFor(base, bill){ return bill==='monthly' ? base : bill==='commit' ? r5(base*0.85) : r5(base*0.75); }
+  function render(){
+    ['starter','growing','ambitious'].forEach(function(key){
+      var card=document.querySelector('[data-plan="'+key+'"]');
+      var price=card.querySelector('.price'), bill=card.querySelector('.billing'), seats=card.querySelector('.seats'), go=card.querySelector('.go');
+      var base=PRICES[key][state.team];
+      price.classList.remove('na'); go.disabled=false; go.textContent='Get started';
+      if (key==='starter') seats.textContent='Up to 2 Seats';
+      else seats.textContent = state.team==='solo' ? 'Teams of 2 or more' : SEATS[state.team];
+      if (base) {
+        price.innerHTML='$'+priceFor(base,state.bill)+'<small>/mo</small>';
+        bill.textContent = state.bill==='monthly' ? 'No commitment' : state.bill==='commit' ? 'With 1-year commitment' : 'Billed annually';
+      } else if (state.team==='big' && key!=='starter') {
+        price.classList.add('na'); price.textContent='Contact us for pricing'; bill.textContent=''; go.textContent='Contact us';
+      } else {
+        price.classList.add('na'); bill.textContent=''; go.disabled=true;
+        price.textContent = key==='starter' ? 'Available for Solo or Solo +1' : 'Available for teams of 2 or more';
+      }
+    });
+  }
+  document.getElementById('team').addEventListener('change',function(e){ state.team=e.target.value; render(); });
+  document.querySelectorAll('.toggle button').forEach(function(b){
+    b.addEventListener('click',function(){ document.querySelectorAll('.toggle button').forEach(function(x){x.classList.remove('on')}); b.classList.add('on'); state.bill=b.dataset.bill; render(); });
+  });
+  document.querySelectorAll('[data-see]').forEach(function(b){ b.addEventListener('click',function(){ document.getElementById('features').scrollIntoView({behavior:'smooth'}); }); });
+  render();
+
+  // ---- Sign-up / demo form (saves to the same early-access list as before) --
   var FN='https://gatndtsmjrxdgxquvydw.supabase.co/functions/v1/early-access-signup';
+  var REST='https://gatndtsmjrxdgxquvydw.supabase.co/rest/v1/website_announcements?select=message,link_url,link_label&is_active=eq.true&order=updated_at.desc&limit=1';
   var ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhdG5kdHNtanJ4ZGd4cXV2eWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzMDgzMjMsImV4cCI6MjA5ODg4NDMyM30._JpUIXueoySXdlk_6pNQ_hXzoDlsqsUriNShn5HGVmo';
-  var btn=document.getElementById('submit'), msg=document.getElementById('formMsg');
-  function show(t,ok){msg.style.display='block';msg.textContent=t;msg.style.color=ok?'#1592c9':'#c0392b';}
-  btn.addEventListener('click',async function(){
+  var dlg=document.getElementById('dlg'), msg=document.getElementById('fmMsg'), send=document.getElementById('fmSend'), ctxTag='';
+  function openForm(kind, plan){
+    var demo = kind==='demo';
+    document.getElementById('fmTitle').textContent = demo ? 'Book a Demo' : (state.team==='big' ? 'Contact us for pricing' : 'Start your free 14-day trial');
+    var ctx = demo ? 'Tell us how to reach you and we\'ll set up a time. Or call (352) 484-6341.'
+      : (plan ? plan+' plan · '+TEAM_LABEL[state.team]+' · '+BILL_LABEL[state.bill]+'. ' : '')+'No credit card required.';
+    document.getElementById('fmCtx').textContent = ctx;
+    ctxTag = demo ? '[Demo request · '+TEAM_LABEL[state.team]+']' : '[Sign-up · '+(plan||'')+' · '+TEAM_LABEL[state.team]+' · '+BILL_LABEL[state.bill]+']';
+    msg.style.display='none'; send.disabled=false; send.textContent= demo ? 'Request demo' : 'Start my trial';
+    dlg.showModal();
+  }
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ openForm('signup', b.dataset.go); }); });
+  document.querySelectorAll('[data-demo]').forEach(function(b){ b.addEventListener('click',function(){ openForm('demo'); }); });
+  document.getElementById('fmCancel').addEventListener('click',function(){ dlg.close(); });
+  function show(t,ok){ msg.style.display='block'; msg.textContent=t; msg.style.color= ok ? '#1592c9' : '#c0392b'; }
+  send.addEventListener('click', async function(){
     var email=document.getElementById('f_email').value.trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){show('Please enter a valid email.',false);return;}
-    btn.disabled=true; var old=btn.textContent; btn.textContent='Sending…';
-    var payload={name:document.getElementById('f_name').value,company:document.getElementById('f_company').value,email:email,phone:document.getElementById('f_phone').value,company_size:document.getElementById('f_size').value,message:document.getElementById('f_message').value,source:'journey-hvac.com'};
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('Please enter a valid email.',false); return; }
+    send.disabled=true; var old=send.textContent; send.textContent='Sending…';
+    var payload={ name:document.getElementById('f_name').value, company:document.getElementById('f_company').value, email:email,
+      phone:document.getElementById('f_phone').value, company_size:TEAM_LABEL[state.team],
+      message:(ctxTag+' '+document.getElementById('f_message').value).trim(), source:'journey-hvac.com' };
     try{
       var r=await fetch(FN,{method:'POST',headers:{'Content-Type':'application/json','apikey':ANON,'Authorization':'Bearer '+ANON},body:JSON.stringify(payload)});
       var d=await r.json();
       if(!r.ok||d.error) throw new Error(d.error||'failed');
-      document.getElementById('formInner').innerHTML='<div class="thanks"><div class="big">You\'re on the list! 🎉</div><p>Thanks for your interest in Journey. We\'ll reach out soon with early access.</p></div>';
-    }catch(e){ show('Something went wrong — please try again.',false); btn.disabled=false; btn.textContent=old; }
+      document.getElementById('fmBody').innerHTML='<p style="font-size:17px;font-weight:700;color:#1592c9;margin:6px 0 8px">Thanks — you\'re in! 🎉</p><p style="color:#5C6B7A">We\'ll reach out shortly.</p><div class="acts"><button type="button" class="cancel" onclick="document.getElementById(\'dlg\').close()">Close</button></div>';
+    }catch(e){ show('Something went wrong — please try again, or call (352) 484-6341.',false); send.disabled=false; send.textContent=old; }
   });
+
+  // ---- Website announcement banner ------------------------------------------
+  fetch(REST,{headers:{apikey:ANON,Authorization:'Bearer '+ANON}}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+    var a=rows&&rows[0]; if(!a||!a.message) return;
+    var el=document.getElementById('announce'); el.textContent=a.message;
+    if(a.link_url && /^https?:\/\//.test(a.link_url)){ var l=document.createElement('a'); l.href=a.link_url; l.textContent=(a.link_label||'Learn more')+' →'; el.appendChild(l); }
+    el.style.display='block';
+  }).catch(function(){});
 </script>
 </body>
 </html>
