@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "has": [{ "type": "host", "value": "ventexiq.com" }], "destination": "/ventexiq.html" },
+    { "source": "/", "has": [{ "type": "host", "value": "www.ventexiq.com" }], "destination": "/ventexiq.html" }
+  ]
+}
