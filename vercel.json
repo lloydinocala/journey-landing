@@ -1,6 +1,7 @@
 {
-  "rewrites": [
-    { "source": "/", "has": [{ "type": "host", "value": "ventexiq.com" }], "destination": "/ventexiq.html" },
-    { "source": "/", "has": [{ "type": "host", "value": "www.ventexiq.com" }], "destination": "/ventexiq.html" }
+  "routes": [
+    { "src": "/", "has": [{ "type": "host", "value": "ventexiq.com" }], "dest": "/ventexiq.html" },
+    { "src": "/", "has": [{ "type": "host", "value": "www.ventexiq.com" }], "dest": "/ventexiq.html" },
+    { "handle": "filesystem" }
   ]
 }
