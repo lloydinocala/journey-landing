@@ -55,7 +55,7 @@
       <div class="r2"><div><label for="u_name">Your name *</label><input id="u_name" autocomplete="name"></div><div><label for="u_company">Company name *</label><input id="u_company" autocomplete="organization"></div></div>
       <div class="r2"><div><label for="u_email">Email *</label><input id="u_email" type="email" autocomplete="email"></div><div><label for="u_phone">Phone *</label><input id="u_phone" type="tel" autocomplete="tel" placeholder="(352) 555-0123"></div></div>
       <div class="r2"><div><label for="u_city">City / area you serve</label><input id="u_city" placeholder="e.g. Ocala, FL"></div><div><label for="u_sw">What do you use today?</label><input id="u_sw" placeholder="e.g. paper, QuickBooks, Housecall Pro"></div></div>
-      <div class="r2"><div><label for="u_lang">Language</label><select id="u_lang"><option>English</option><option value="Spanish">Español</option></select></div><div></div></div>
+      <div class="r2"><div><label for="u_title">Your title</label><input id="u_title" autocomplete="organization-title" placeholder="e.g. Owner"></div><div><label for="u_lang">Language</label><select id="u_lang"><option>English</option><option value="Spanish">Español</option></select></div></div>
       <label for="u_msg">Anything we should know?</label><textarea id="u_msg" rows="2" placeholder="Optional"></textarea>
       <div class="hp" aria-hidden="true"><label>Website<input id="u_web" tabindex="-1" autocomplete="off"></label></div>
       <button class="btn solid wide" id="go1" type="button">Continue to your setup call →</button>
@@ -131,7 +131,7 @@
   }
   var lead = null;
   document.getElementById('go1').addEventListener('click', function () {
-    var body = { action: 'signup', name: v('u_name'), company: v('u_company'), email: v('u_email'), phone: v('u_phone'), city: v('u_city'), software: v('u_sw'), language: v('u_lang'), message: v('u_msg'), website: v('u_web'),
+    var body = { action: 'signup', name: v('u_name'), title: v('u_title'), company: v('u_company'), email: v('u_email'), phone: v('u_phone'), city: v('u_city'), software: v('u_sw'), language: v('u_lang'), message: v('u_msg'), website: v('u_web'),
       plan: (PLANS.filter(function (p) { return p.key === st.plan; })[0] || {}).name, team: TEAM_LABEL[st.team], billing: BILL_LABEL[st.bill],
       addons: [].map.call(document.querySelectorAll('.addons input:checked'), function (x) { return x.value; }) };
     if (!body.name || !body.company) return err('Please enter your name and company name.');

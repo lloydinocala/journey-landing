@@ -38,11 +38,12 @@
       } else {
         right.innerHTML = '<h3>2 · Tell us who to call</h3>' + pick +
           '<form class="fm" onsubmit="return false" autocomplete="on">' +
-          '<div class="r2"><div><label for="bk_name">Your name *</label><input id="bk_name" autocomplete="name"></div><div><label for="bk_company">Company</label><input id="bk_company" autocomplete="organization"></div></div>' +
+          '<div class="r2"><div><label for="bk_name">Your name *</label><input id="bk_name" autocomplete="name"></div><div><label for="bk_title">Title</label><input id="bk_title" autocomplete="organization-title" placeholder="e.g. Owner, Office manager"></div></div>' +
+          '<label for="bk_company">Company</label><input id="bk_company" autocomplete="organization">' +
           '<div class="r2"><div><label for="bk_phone">Phone *</label><input id="bk_phone" type="tel" autocomplete="tel" placeholder="(352) 555-0123"></div><div><label for="bk_email">Email *</label><input id="bk_email" type="email" autocomplete="email"></div></div>' +
           '<div class="r2"><div><label for="bk_team">Team size</label><select id="bk_team"><option value="">Choose…</option><option>Just me +1</option><option>2-5 people</option><option>6-10 people</option><option>11-15 people</option><option>16 or more</option></select></div>' +
           '<div><label for="bk_lang">Language</label><select id="bk_lang"><option>English</option><option value="Spanish">Español</option></select></div></div>' +
-          '<label for="bk_msg_in">What would you like to see?</label><textarea id="bk_msg_in" rows="2" placeholder="Optional — e.g. dispatch, the AI receptionist, estimates"></textarea>' +
+          '<label for="bk_msg_in">Special interests</label><textarea id="bk_msg_in" rows="2" placeholder="What would you most like to see? e.g. dispatch, the AI receptionist, estimates"></textarea>' +
           '<div class="hp" aria-hidden="true"><label>Website<input id="bk_web" tabindex="-1" autocomplete="off"></label></div>' +
           '<label class="chk"><input type="checkbox" id="bk_rem" checked> Send me a confirmation and reminders (the day before and an hour before) by text or email. Msg &amp; data rates may apply; reply STOP to opt out.</label>' +
           '<button class="btn solid wide" id="bk_go"' + (state.slot ? '' : ' disabled') + '>Book my demo</button><div class="msg" id="bk_msg"></div></form>';
@@ -56,7 +57,7 @@
       var body = { action: 'book', slot: state.slot, purpose: opts.purpose || 'demo', reminders_ok: right.querySelector('#bk_rem').checked };
       if (lead) { body.lead_id = lead.id; body.name = lead.name; body.company = lead.company; body.email = lead.email; body.phone = lead.phone; body.team = lead.team; body.language = lead.language; }
       else {
-        body.name = v('bk_name'); body.company = v('bk_company'); body.phone = v('bk_phone'); body.email = v('bk_email'); body.team = v('bk_team'); body.language = v('bk_lang'); body.message = v('bk_msg_in'); body.website = v('bk_web');
+        body.name = v('bk_name'); body.title = v('bk_title'); body.company = v('bk_company'); body.phone = v('bk_phone'); body.email = v('bk_email'); body.team = v('bk_team'); body.language = v('bk_lang'); body.message = v('bk_msg_in'); body.website = v('bk_web');
         if (!body.name) return show('Please enter your name.');
         if (String(body.phone).replace(/\D/g, '').length < 10) return show('Please enter a 10-digit phone number so Lloyd can call you.');
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(body.email)) return show('Please enter a valid email.');
