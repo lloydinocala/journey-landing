@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online demo — Journey-HVAC</title>
+<meta name="description" content="Watch the Journey-HVAC tour and talk to Clara, the AI receptionist, live in your browser.">
+<meta property="og:title" content="Journey-HVAC online demo">
+<meta property="og:description" content="Narrated tours of the Journey apps, plus a live AI receptionist you can talk to.">
+<meta property="og:image" content="https://journey-hvac.com/videos/clara.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='4' y='4' width='92' height='92' rx='24' fill='%230C2A47'/><text x='50' y='74' font-size='66' font-weight='800' text-anchor='middle' fill='%2300B0F0' font-family='Georgia,serif'>J</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/hub.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><span class="j">Journey</span><span class="h">-HVAC</span></a>
+  <nav class="nav">
+    <a class="opt on" href="/demo">Watch the demo</a>
+    <a class="opt" href="#clara">Talk to Clara</a>
+    <a class="opt" href="/start#book">Book a demo</a>
+    <a class="cta" href="/signup">Sign up</a>
+  </nav>
+</div></header>
+
+<section class="band" style="padding-top:34px"><div class="wrap">
+  <span class="kicker">Online demo · about 6 minutes</span>
+  <div class="player" style="margin-top:6px">
+    <div>
+      <div class="screen"><video id="vid" controls playsinline preload="metadata"></video></div>
+      <div class="now"><h2 id="vTitle"></h2><p id="vDesc"></p></div>
+    </div>
+    <div>
+      <div class="list" id="list"></div>
+      <label class="autoplay"><input type="checkbox" id="auto" checked> Play the next video automatically</label>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec alt" id="clara"><div class="wrap">
+  <div class="clara">
+    <div>
+      <span class="kicker" style="color:#0070C0">Live AI receptionist</span>
+      <h2>Talk to Clara, right now.</h2>
+      <p class="lede">Clara answers the phone for HVAC shops — day or night, in English or Spanish — and books real appointments straight onto the calendar. Here she's answering for our demo company, <b>Sunshine Comfort</b>. Pretend you're a homeowner and try her out.</p>
+      <ul class="tips">
+        <li>Say your AC isn't cooling and ask for someone to come out.</li>
+        <li>Ask for a maintenance tune-up, or an estimate on a new system.</li>
+        <li>Try it after hours, or switch to Spanish mid-call.</li>
+        <li>Ask her about Journey — she can book you a call with Lloyd, too.</li>
+      </ul>
+    </div>
+    <div class="callbox">
+      <div class="orb" id="orb"></div>
+      <div class="state" id="cState">Ready when you are</div>
+      <div class="hint" id="cHint">Uses your microphone. Calls run a few minutes at most.</div>
+      <button class="btn cyan" id="cBtn">🎙 Start talking to Clara</button>
+      <div class="transcript" id="tx"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="cta-band">
+  <h2>Want to see it with your own shop in mind?</h2>
+  <p>Pick a time on Lloyd's calendar, or go ahead and start your account.</p>
+  <div class="row"><a class="btn cyan" href="/start#book">Book a live demo</a><a class="btn" href="/signup">Start your account</a></div>
+</section>
+
+<footer>
+  <div>© 2026 Journey-HVAC · a VentexIQ product</div>
+  <div style="margin-top:8px"><a href="/">Home</a>·<a href="/privacy.html">Privacy</a>·<a href="/terms.html">Terms</a></div>
+</footer>
+
+<script src="/hub.js"></script>
+<script>
+  // ---- Video tour --------------------------------------------------------------
+  var VIDEOS = [
+    { id: 'clara', t: 'Clara, the AI receptionist', d: 'Answers your calls in English or Spanish and books real jobs straight onto your calendar.', len: '1:06' },
+    { id: 'field-app', t: 'Technician field app', d: 'Your technician’s day in one app, from the job details to wrapping up at the house.', len: '1:06' },
+    { id: 'estimates', t: 'Estimates, explained', d: 'System estimates your customers can actually understand.', len: '1:06' },
+    { id: 'customer-app', t: 'The customer app', d: 'Your customers book service and follow their appointments — under your brand.', len: '1:20' },
+    { id: 'on-call', t: 'On-call schedule', d: 'After-hours calls reach the right tech, with the right permissions for the night.', len: '1:06' },
+  ];
+  var vid = document.getElementById('vid'), list = document.getElementById('list'), cur = 0;
+  VIDEOS.forEach(function (v, i) {
+    var b = document.createElement('button'); b.className = 'item'; b.type = 'button';
+    b.innerHTML = '<img src="/videos/' + v.id + '.jpg" alt="" loading="lazy"><div><b>' + v.t + '</b><small>' + v.len + '</small></div>';
+    b.addEventListener('click', function () { play(i, true); });
+    list.appendChild(b);
+  });
+  function play(i, start) {
+    cur = i; var v = VIDEOS[i];
+    vid.poster = '/videos/' + v.id + '.jpg'; vid.src = '/videos/' + v.id + '.mp4';
+    document.getElementById('vTitle').textContent = v.t; document.getElementById('vDesc').textContent = v.d;
+    [].forEach.call(list.children, function (c, k) { c.classList.toggle('on', k === i); });
+    if (start) vid.play().catch(function () {});
+    try { history.replaceState(null, '', '#' + v.id); } catch (e) {}
+  }
+  vid.addEventListener('ended', function () { if (document.getElementById('auto').checked && cur < VIDEOS.length - 1) play(cur + 1, true); });
+  var hash = location.hash.slice(1), start = VIDEOS.map(function (v) { return v.id; }).indexOf(hash);
+  play(start >= 0 ? start : 0, false);
+  if (hash === 'clara-call') document.getElementById('clara').scrollIntoView();
+</script>
+<script type="module">
+  // ---- Talk to Clara (Retell web call) ----------------------------------------
+  const btn = document.getElementById('cBtn'), st = document.getElementById('cState'), hint = document.getElementById('cHint'), orb = document.getElementById('orb'), tx = document.getElementById('tx');
+  let client = null, live = false;
+  const set = (s, h) => { st.textContent = s; if (h !== undefined) hint.textContent = h; };
+  function reset(msg) {
+    live = false; orb.classList.remove('live', 'talk');
+    btn.disabled = false; btn.textContent = '🎙 Talk to Clara again'; btn.className = 'btn cyan';
+    set(msg || 'Call ended', 'Thanks for trying Clara. Ready to see the rest of Journey?');
+  }
+  function showTranscript(list) {
+    if (!Array.isArray(list) || !list.length) return;
+    tx.style.display = 'block';
+    tx.innerHTML = list.slice(-12).map((u) => `<p class="${u.role === 'agent' ? 'a' : 'u'}"><b>${u.role === 'agent' ? 'Clara' : 'You'}:</b> ${JourneyHub.esc(u.content)}</p>`).join('');
+    tx.scrollTop = tx.scrollHeight;
+  }
+  btn.addEventListener('click', async () => {
+    if (live) { try { client && client.stopCall(); } catch (e) {} reset(); return; }
+    btn.disabled = true; set('Connecting…', 'Allow microphone access if your browser asks.');
+    try { const s = await navigator.mediaDevices.getUserMedia({ audio: true }); s.getTracks().forEach((t) => t.stop()); }
+    catch (e) { btn.disabled = false; set('Microphone blocked', 'Clara needs your microphone. Allow it in your browser, then try again.'); return; }
+    const d = await JourneyHub.api({ action: 'web_call' });
+    if (!d || !d.ok) { btn.disabled = false; set('Clara is unavailable', (d && d.error) || 'Please try again shortly.'); return; }
+    try {
+      const { RetellWebClient } = await import('https://esm.sh/retell-client-js-sdk@3.0.4');
+      client = new RetellWebClient();
+      client.on('call_started', () => { live = true; orb.classList.add('live'); btn.disabled = false; btn.textContent = '⏹ End call'; btn.className = 'btn'; set('Connected — say hello', 'Talk normally. Clara will answer for Sunshine Comfort.'); });
+      client.on('agent_start_talking', () => { orb.classList.add('talk'); set('Clara is talking…'); });
+      client.on('agent_stop_talking', () => { orb.classList.remove('talk'); set('Listening…'); });
+      client.on('update', (u) => showTranscript(u && u.transcript));
+      client.on('call_ended', () => reset());
+      client.on('error', (e) => { console.error(e); try { client.stopCall(); } catch (x) {} reset('The call dropped'); });
+      await client.startCall({ accessToken: d.access_token, callId: d.call_id, transport: d.transport, iceServers: d.ice_servers });
+    } catch (e) { console.error(e); btn.disabled = false; set('Couldn\'t connect', 'Please try again, or call (352) 484-6341.'); }
+  });
+</script>
+</body>
+</html>

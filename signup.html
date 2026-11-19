@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign up — Journey-HVAC</title>
+<meta name="description" content="Start your Journey-HVAC account: choose your plan and book your setup call.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='4' y='4' width='92' height='92' rx='24' fill='%230C2A47'/><text x='50' y='74' font-size='66' font-weight='800' text-anchor='middle' fill='%2300B0F0' font-family='Georgia,serif'>J</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/hub.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><span class="j">Journey</span><span class="h">-HVAC</span></a>
+  <nav class="nav">
+    <a class="opt" href="/demo">Watch the demo</a>
+    <a class="opt" href="/start#book">Book a demo</a>
+    <a class="cta" href="tel:+13524846341">📞 (352) 484-6341</a>
+  </nav>
+</div></header>
+
+<section class="band" style="padding:40px 0 34px"><div class="wrap">
+  <span class="kicker">Start your account</span>
+  <h1>Let's get your shop on Journey.</h1>
+  <p class="sub">Your free 14-day trial starts when your account is set up. No credit card required. We set it up <em style="color:#FFFF00">with</em> you — your customers, your price book, your team — on a setup call.</p>
+  <div class="steps">
+    <div class="step on" id="s1"><i>1</i> Plan &amp; company</div>
+    <div class="step" id="s2"><i>2</i> Book your setup call</div>
+    <div class="step" id="s3"><i>3</i> You're in</div>
+  </div>
+</div></section>
+
+<section class="sec" id="step1"><div class="wrap">
+  <div class="panel">
+    <h3>Choose your plan</h3>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:16px" class="fm">
+      <div><label for="team" style="margin-top:0">Team size</label>
+        <select id="team" style="width:auto;min-width:170px">
+          <option value="solo">Just me +1</option><option value="t1">2-5 people</option><option value="t2">6-10 people</option><option value="t3">11-15 people</option><option value="big">16 or more</option>
+        </select></div>
+      <div><label style="margin-top:0">Billing</label>
+        <div class="seg" id="bill"><button type="button" data-b="monthly">Monthly</button><button type="button" data-b="commit">1-Yr Commitment</button><button type="button" data-b="annual" class="on">Annual</button></div></div>
+      <div class="note" style="margin-top:22px">Save up to 25% with annual billing.</div>
+    </div>
+    <div class="plans" id="plans"></div>
+    <div class="fm" style="margin-top:14px"><label style="margin-top:0">Add-ons you're interested in</label>
+      <div class="addons"><label><input type="checkbox" value="AI Receptionist"> AI Receptionist</label><label><input type="checkbox" value="Marketing Module"> Marketing Module</label><label><input type="checkbox" value="Journey Accounting"> Journey Accounting</label></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:20px">
+    <h3>About you and your company</h3>
+    <form class="fm" id="f1" onsubmit="return false" autocomplete="on">
+      <div class="r2"><div><label for="u_name">Your name *</label><input id="u_name" autocomplete="name"></div><div><label for="u_company">Company name *</label><input id="u_company" autocomplete="organization"></div></div>
+      <div class="r2"><div><label for="u_email">Email *</label><input id="u_email" type="email" autocomplete="email"></div><div><label for="u_phone">Phone *</label><input id="u_phone" type="tel" autocomplete="tel" placeholder="(352) 555-0123"></div></div>
+      <div class="r2"><div><label for="u_city">City / area you serve</label><input id="u_city" placeholder="e.g. Ocala, FL"></div><div><label for="u_sw">What do you use today?</label><input id="u_sw" placeholder="e.g. paper, QuickBooks, Housecall Pro"></div></div>
+      <div class="r2"><div><label for="u_lang">Language</label><select id="u_lang"><option>English</option><option value="Spanish">Español</option></select></div><div></div></div>
+      <label for="u_msg">Anything we should know?</label><textarea id="u_msg" rows="2" placeholder="Optional"></textarea>
+      <div class="hp" aria-hidden="true"><label>Website<input id="u_web" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn solid wide" id="go1" type="button">Continue to your setup call →</button>
+      <div class="msg" id="m1"></div>
+      <p class="note">By continuing you agree to our <a href="/terms.html">Terms</a> and <a href="/privacy.html">Privacy Policy</a>.</p>
+    </form>
+  </div>
+</div></section>
+
+<section class="sec" id="step2" style="display:none"><div class="wrap">
+  <h2>Book your setup call</h2>
+  <p class="lede">Pick a time on Lloyd's calendar. On the call we'll set up your account together and get your trial started. Can't find a time? Call <a href="tel:+13524846341"><b>(352) 484-6341</b></a>.</p>
+  <div id="booking"></div>
+  <p class="note" style="margin-top:14px"><a href="#" id="skip">I'd rather have Lloyd call me to set a time</a></p>
+</div></section>
+
+<section class="sec" id="step3" style="display:none"><div class="wrap">
+  <div class="panel done">
+    <div class="big">🎉</div><h3>You're in.</h3>
+    <p id="doneText">We've got your sign-up. Lloyd will reach out shortly to set up your account.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px"><a class="btn solid" href="/demo">Watch the tour while you wait</a><a class="btn" href="/demo#clara">Talk to Clara</a></div>
+  </div>
+</div></section>
+
+<footer>
+  <div>© 2026 Journey-HVAC · a VentexIQ product</div>
+  <div style="margin-top:8px"><a href="/">Home</a>·<a href="/privacy.html">Privacy</a>·<a href="/terms.html">Terms</a></div>
+</footer>
+
+<script src="/hub.js"></script>
+<script>
+  // Same pricing as the home page. Monthly = set price; 1-yr = 15% off; annual = 25% off; rounded to $5.
+  var PRICES = { starter: { solo: 99 }, growing: { t1: 199, t2: 249, t3: 349 }, ambitious: { t1: 299, t2: 349, t3: 499 } };
+  var PLANS = [
+    { key: 'starter', name: 'Pro Starter', sm: 'Solo or Solo +1' },
+    { key: 'growing', name: 'Growing', sm: 'Most popular' },
+    { key: 'ambitious', name: 'Ambitious', sm: 'Inventory, marketing, premium payroll' },
+    { key: 'established', name: 'Established', sm: 'Unlimited seats · HR & accounting' },
+  ];
+  var TEAM_LABEL = { solo: 'Just me +1', t1: '2-5 people', t2: '6-10 people', t3: '11-15 people', big: '16 or more' };
+  var BILL_LABEL = { monthly: 'Monthly, no commitment', commit: 'Monthly, 1-year commitment', annual: 'Annual' };
+  var MAP = { 'pro starter': 'starter', starter: 'starter', growing: 'growing', ambitious: 'ambitious', established: 'established' };
+  var q = new URLSearchParams(location.search);
+  var st = { team: TEAM_LABEL[q.get('team')] ? q.get('team') : 'solo', bill: BILL_LABEL[q.get('bill')] ? q.get('bill') : 'annual', plan: MAP[String(q.get('plan') || '').toLowerCase()] || null };
+  var r5 = function (x) { return Math.round(x / 5) * 5; };
+  var priceFor = function (b) { return st.bill === 'monthly' ? b : st.bill === 'commit' ? r5(b * .85) : r5(b * .75); };
+  function avail(k) { if (k === 'established') return true; if (k === 'starter') return st.team === 'solo'; return st.team !== 'solo'; }
+  function render() {
+    document.getElementById('team').value = st.team;
+    [].forEach.call(document.querySelectorAll('#bill button'), function (b) { b.classList.toggle('on', b.dataset.b === st.bill); });
+    if (st.plan && !avail(st.plan)) st.plan = null;
+    if (!st.plan) st.plan = st.team === 'solo' ? 'starter' : st.team === 'big' ? 'established' : 'growing';
+    var box = document.getElementById('plans'); box.innerHTML = '';
+    PLANS.forEach(function (p) {
+      var base = (PRICES[p.key] || {})[st.team], ok = avail(p.key);
+      var pr = p.key === 'established' || st.team === 'big' ? 'Custom pricing' : base ? '$' + priceFor(base) + '<small>/mo' + (st.bill === 'annual' ? ', billed annually' : '') + '</small>' : (p.key === 'starter' ? 'Solo or Solo +1 only' : 'Teams of 2 or more');
+      var d = document.createElement('button'); d.type = 'button'; d.className = 'plan' + (st.plan === p.key ? ' on' : '') + (ok ? '' : ' na');
+      d.innerHTML = '<h4>' + p.name + '</h4><div class="pr">' + pr + '</div><div class="sm">' + p.sm + '</div>';
+      if (ok) d.addEventListener('click', function () { st.plan = p.key; render(); });
+      box.appendChild(d);
+    });
+  }
+  document.getElementById('team').addEventListener('change', function (e) { st.team = e.target.value; render(); });
+  [].forEach.call(document.querySelectorAll('#bill button'), function (b) { b.addEventListener('click', function () { st.bill = b.dataset.b; render(); }); });
+  render();
+
+  function v(id) { return document.getElementById(id).value.trim(); }
+  function err(t) { var m = document.getElementById('m1'); m.className = 'msg err'; m.textContent = t; }
+  function stepTo(n) {
+    ['step1', 'step2', 'step3'].forEach(function (id, i) { document.getElementById(id).style.display = i + 1 === n ? '' : 'none'; });
+    ['s1', 's2', 's3'].forEach(function (id, i) { var e = document.getElementById(id); e.className = 'step' + (i + 1 === n ? ' on' : i + 1 < n ? ' done' : ''); });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  var lead = null;
+  document.getElementById('go1').addEventListener('click', function () {
+    var body = { action: 'signup', name: v('u_name'), company: v('u_company'), email: v('u_email'), phone: v('u_phone'), city: v('u_city'), software: v('u_sw'), language: v('u_lang'), message: v('u_msg'), website: v('u_web'),
+      plan: (PLANS.filter(function (p) { return p.key === st.plan; })[0] || {}).name, team: TEAM_LABEL[st.team], billing: BILL_LABEL[st.bill],
+      addons: [].map.call(document.querySelectorAll('.addons input:checked'), function (x) { return x.value; }) };
+    if (!body.name || !body.company) return err('Please enter your name and company name.');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(body.email)) return err('Please enter a valid email.');
+    if (body.phone.replace(/\D/g, '').length < 10) return err('Please enter a 10-digit phone number.');
+    var b = this; b.disabled = true; b.textContent = 'Saving…';
+    JourneyHub.api(body).then(function (d) {
+      b.disabled = false; b.textContent = 'Continue to your setup call →';
+      if (!d || !d.ok) return err((d && d.error) || 'Something went wrong. Please try again.');
+      lead = { id: d.lead_id, name: body.name, company: body.company, email: body.email, phone: body.phone, team: body.team, language: body.language };
+      JourneyHub.mountBooking(document.getElementById('booking'), { purpose: 'onboarding', lead: lead, onDone: function (when) {
+        document.getElementById('doneText').innerHTML = 'Your setup call is booked for <b>' + JourneyHub.esc(when) + '</b> (Eastern). Lloyd will call you then and set up your account with you.';
+        setTimeout(function () { stepTo(3); }, 1600);
+      } });
+      stepTo(2);
+    });
+  });
+  document.getElementById('skip').addEventListener('click', function (e) { e.preventDefault(); stepTo(3); });
+</script>
+</body>
+</html>

@@ -2,6 +2,10 @@
   "routes": [
     { "src": "/", "has": [{ "type": "host", "value": "ventexiq.com" }], "dest": "/ventexiq.html" },
     { "src": "/", "has": [{ "type": "host", "value": "www.ventexiq.com" }], "dest": "/ventexiq.html" },
+    { "src": "/start/?", "dest": "/start.html" },
+    { "src": "/demo/?", "dest": "/demo.html" },
+    { "src": "/signup/?", "dest": "/signup.html" },
+    { "src": "/book/?", "status": 308, "headers": { "Location": "/start#book" } },
     { "handle": "filesystem" }
   ]
 }
