@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Journey-HVAC — The office is closed. Clara is on the call.</title>
+<meta name="description" content="Journey-HVAC is HVAC software with agentic AI. Clara, the AI receptionist, answers after-hours calls, books real jobs and only wakes your on-call tech when a customer needs help tonight.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='4' y='4' width='92' height='92' rx='24' fill='%230C2A47'/><text x='50' y='74' font-size='66' font-weight='800' text-anchor='middle' fill='%2300B0F0' font-family='Georgia,serif'>J</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/frames/d-0.webp" media="(min-aspect-ratio: 1/1)">
+<link rel="preload" as="image" href="/assets/frames/m-0.webp" media="(max-aspect-ratio: 1/1)">
+<style>
+:root{--night:#050E19;--navy:#0C2A47;--deep:#071726;--cyan:#00B0F0;--cyan2:#5FD4FF;--ink:#0E1B2C;--soft:#C7D5E6;--muted:#8FA6BF;--ok:#2BD47D}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:#fff;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,.display{font-family:'Archivo Black',Inter,sans-serif;font-weight:400;letter-spacing:-.01em;margin:0;line-height:1.02;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+
+/* header */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,40px);background:linear-gradient(180deg,rgba(5,14,25,.85),rgba(5,14,25,0));transition:background .3s}
+.top.solid{background:rgba(5,14,25,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.brand{display:flex;align-items:baseline;gap:2px;text-decoration:none;line-height:1}
+.brand .j{font-family:'Times New Roman',Times,serif;font-weight:700;color:var(--cyan);font-size:28px}
+.brand .h{font-family:'Arial Black','Archivo Black',sans-serif;color:#fff;font-size:17px;letter-spacing:.02em}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{text-decoration:none;font-weight:600;font-size:14px;padding:10px 14px;border-radius:999px;color:#DCE7F3}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav .cta{background:var(--cyan);color:#04121F;font-weight:800}
+.nav .cta:hover{background:var(--cyan2)}
+@media (max-width:720px){.nav .opt{display:none}.brand .j{font-size:24px}.brand .h{font-size:15px}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:2px solid rgba(255,255,255,.28);color:#fff;background:transparent;cursor:pointer;font-family:inherit}
+.btn:hover{border-color:#fff}
+.btn.cyan{background:var(--cyan);border-color:var(--cyan);color:#04121F}
+.btn.cyan:hover{background:var(--cyan2);border-color:var(--cyan2)}
+
+/* ---------- ACT 1 · HERO (scroll-scrubbed film) ---------- */
+#hero{position:relative;height:520vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+#film{position:absolute;inset:0;width:100%;height:100%}
+.vignette{position:absolute;inset:0;pointer-events:none;background:
+ linear-gradient(90deg,rgba(3,9,16,.82) 0%,rgba(3,9,16,.45) 38%,rgba(3,9,16,0) 62%),
+ linear-gradient(180deg,rgba(3,9,16,.55) 0%,rgba(3,9,16,0) 30%,rgba(3,9,16,0) 70%,rgba(3,9,16,.6) 100%)}
+.beat{position:absolute;left:clamp(20px,6vw,88px);top:50%;transform:translateY(-50%);max-width:min(560px,86vw);opacity:0;transition:none;will-change:opacity,transform;pointer-events:none}
+.beat.live{pointer-events:auto}
+.kick{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.beat h1,.beat h2{font-size:clamp(38px,5.6vw,76px)}
+.beat p{margin-top:18px;font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:#DCE7F3;max-width:500px}
+.beat .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.beat em{font-style:normal;color:var(--cyan)}
+.hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C7D5E6;display:flex;flex-direction:column;align-items:center;gap:10px;transition:opacity .4s}
+.hint i{display:block;width:2px;height:38px;background:linear-gradient(var(--cyan),transparent);animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.clock{position:absolute;right:clamp(20px,5vw,64px);top:92px;font-family:'Archivo Black',sans-serif;font-size:clamp(20px,2.2vw,28px);color:#fff;opacity:.9;display:flex;align-items:center;gap:10px}
+.clock small{font-family:Inter;font-weight:700;font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--cyan);width:0}
+@media (max-aspect-ratio:1/1){
+ .vignette{background:linear-gradient(180deg,rgba(3,9,16,.88) 0%,rgba(3,9,16,.5) 34%,rgba(3,9,16,0) 56%,rgba(3,9,16,0) 70%,rgba(3,9,16,.55) 100%)}
+ .beat{top:96px;transform:none;left:20px;right:20px}
+ .beat h1,.beat h2{font-size:clamp(32px,9vw,46px)}
+ .clock{top:auto;bottom:22px;right:20px}
+}
+
+/* ---------- shared sections ---------- */
+.sec{position:relative;padding:clamp(80px,12vw,150px) clamp(20px,6vw,88px)}
+.wrap{max-width:1200px;margin:0 auto}
+.sec .kick{margin-bottom:18px}
+.sec h2{font-size:clamp(34px,4.6vw,62px)}
+.lede{margin-top:20px;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--soft);max-width:640px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- ACT 1 · CLARA ---------- */
+#clara{background:radial-gradient(1200px 600px at 85% 10%,rgba(0,176,240,.14),transparent 60%),linear-gradient(180deg,#000 0%,var(--deep) 18%,var(--deep) 100%)}
+.clara-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:start;margin-top:56px}
+.points{display:flex;flex-direction:column;gap:22px}
+.pt{display:flex;gap:16px;align-items:flex-start}
+.pt .dot{flex:0 0 40px;height:40px;border-radius:12px;background:rgba(0,176,240,.14);display:flex;align-items:center;justify-content:center;color:var(--cyan)}
+.pt h3{margin:0 0 4px;font-size:19px;font-weight:800}
+.pt p{color:var(--soft);font-size:16.5px;line-height:1.5}
+.player{background:linear-gradient(180deg,#0E2238,#0A1A2C);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:22px;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.ph-top{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.07)}
+.play{flex:0 0 60px;height:60px;border-radius:50%;border:0;background:var(--cyan);color:#04121F;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 0 0 rgba(0,176,240,.6);animation:pulse 2.4s infinite}
+.play.on{animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,176,240,.55)}70%{box-shadow:0 0 0 18px rgba(0,176,240,0)}100%{box-shadow:0 0 0 0 rgba(0,176,240,0)}}
+.ph-meta b{display:block;font-size:16px}
+.ph-meta span{font-size:13px;color:var(--muted)}
+.prog{margin-left:auto;font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted)}
+.track{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin:14px 0 4px;overflow:hidden}
+.track i{display:block;height:100%;width:0;background:var(--cyan)}
+.chat{height:420px;overflow-y:auto;padding:10px 4px 4px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;scrollbar-width:none}
+.chat::-webkit-scrollbar{display:none}
+.msg{max-width:84%;padding:11px 15px;border-radius:18px;font-size:15.5px;line-height:1.4;animation:pop .35s ease both}
+.msg small{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;opacity:.7}
+.msg.clara{align-self:flex-start;background:rgba(0,176,240,.16);border:1px solid rgba(0,176,240,.3);border-bottom-left-radius:6px}
+.msg.caller{align-self:flex-end;background:#fff;color:var(--ink);border-bottom-right-radius:6px}
+.msg.alert{align-self:center;max-width:92%;background:#12301E;border:1px solid rgba(43,212,125,.4);color:#D8FBE7;font-size:14.5px;border-radius:14px}
+.empty{margin:auto;text-align:center;color:var(--muted);font-size:15px;max-width:280px}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.live-link{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-decoration:none}
+.live-link b{font-size:16px}.live-link span{color:var(--muted);font-size:14px}
+.live-link:hover{border-color:var(--cyan)}
+@media (max-width:900px){.clara-grid{grid-template-columns:1fr}.chat{height:360px}}
+
+/* ---------- ACT 1 · SLEEP ---------- */
+#sleep{background:linear-gradient(180deg,var(--deep),#040B14);padding-bottom:0}
+.sleep-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,5vw,72px);margin-top:56px;align-items:start}
+.vidcard{position:sticky;top:110px;border-radius:28px;overflow:hidden;background:#000;box-shadow:0 40px 80px rgba(0,0,0,.5);aspect-ratio:16/8.13}
+.vidcard video{width:100%;height:100%;object-fit:cover;display:block}
+.vidcard .tag{position:absolute;left:16px;top:16px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(5,14,25,.75);padding:8px 12px;border-radius:999px}
+.night{position:relative;padding-left:34px;display:flex;flex-direction:column;gap:22px;padding-bottom:40px}
+.night:before{content:'';position:absolute;left:11px;top:6px;bottom:40px;width:2px;background:rgba(255,255,255,.1)}
+.call{position:relative;padding:20px 22px;border-radius:20px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);opacity:.35;transform:translateX(10px);transition:all .6s cubic-bezier(.2,.7,.2,1)}
+.call:before{content:'';position:absolute;left:-29px;top:26px;width:12px;height:12px;border-radius:50%;background:#2A3B50;border:2px solid var(--deep);transition:background .4s}
+.call.on{opacity:1;transform:none}
+.call.on:before{background:var(--cyan)}
+.call .t{font-family:'Archivo Black',sans-serif;font-size:15px;color:var(--cyan);letter-spacing:.02em}
+.call q{display:block;margin:8px 0 12px;font-size:18px;font-weight:600;quotes:'“' '”'}
+.out{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:15px;color:var(--soft)}
+.out b{color:#fff}
+.zz{margin-left:auto;flex:0 0 auto;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(43,212,125,.14);color:var(--ok);white-space:nowrap}
+.call.wake{border-color:rgba(0,176,240,.45);background:rgba(0,176,240,.08)}
+.call.wake .zz{background:var(--cyan);color:#04121F}
+.example{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+@media (max-width:900px){.sleep-grid{grid-template-columns:1fr}.vidcard{position:relative;top:0;aspect-ratio:9/12}}
+
+/* ---------- ACT 1 · ROLLING ---------- */
+#rolling{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:120px 20px}
+#rolling video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+#rolling:after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(3,9,16,.55),rgba(3,9,16,.88));z-index:1}
+#rolling .inner{position:relative;z-index:2;max-width:880px}
+#rolling h2{font-size:clamp(36px,5.4vw,74px)}
+#rolling p{margin:22px auto 0;font-size:clamp(18px,1.7vw,22px);color:#DCE7F3;max-width:620px;line-height:1.5}
+#rolling .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+
+.next{background:#040B14;text-align:center;padding:90px 20px 110px;border-top:1px solid rgba(255,255,255,.06)}
+.next .kick{margin-bottom:12px}
+.next h2{font-size:clamp(28px,3.4vw,44px)}
+.next p{color:var(--muted);margin-top:14px}
+footer{background:#02070D;color:var(--muted);font-size:13px;text-align:center;padding:34px 20px}
+footer a{color:var(--muted);margin:0 8px}
+
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.play{animation:none}.hint i{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <a class="brand" href="/" aria-label="Journey-HVAC home"><span class="j">Journey</span><span class="h">-HVAC</span></a>
+  <nav class="nav">
+    <a class="opt" href="#clara">Hear Clara</a>
+    <a class="opt" href="/demo#clara">Talk to Clara live</a>
+    <a class="opt" href="/signup">Sign up</a>
+    <a class="cta" href="/start#book">Book a demo</a>
+  </nav>
+</header>
+
+<!-- ===================== ACT 1 · THE NIGHT ===================== -->
+<section id="hero" aria-label="After hours">
+  <div class="stage">
+    <canvas id="film" aria-hidden="true"></canvas>
+    <div class="vignette"></div>
+
+    <div class="clock" aria-hidden="true"><small>After hours</small><span id="clock">9:14 PM</span></div>
+
+    <div class="beat" data-in="0" data-out=".2">
+      <span class="kick">Journey-HVAC · AI receptionist</span>
+      <h1>It's 9:14 PM. Your phone rings.</h1>
+      <p>Every HVAC shop knows this call. A customer with no cooling, and an office that closed hours ago.</p>
+    </div>
+    <div class="beat" data-in=".22" data-out=".44">
+      <h2><em>Clara</em> answers.<br>First ring.</h2>
+      <p>Journey's AI receptionist picks up day or night, in English or Spanish. She asks the right questions and books the job.</p>
+    </div>
+    <div class="beat" data-in=".5" data-out=".72">
+      <h2>Without her, it's voicemail.</h2>
+      <p>A customer with no cooling doesn't leave a message. She calls the next company on Google, and that job is gone for good.</p>
+    </div>
+    <div class="beat" data-in=".8" data-out="1.01">
+      <h2>The office is closed.<br><em>Clara is on the call.</em></h2>
+      <p>Never lose an after-hours job again.</p>
+      <div class="row"><a class="btn cyan" href="/start#book">Book a demo</a><a class="btn" href="#clara">Hear the call</a></div>
+    </div>
+
+    <div class="hint" id="hint"><span>Scroll</span><i></i></div>
+    <div class="bar" id="bar"></div>
+  </div>
+</section>
+
+<section id="clara" class="sec" aria-labelledby="clara-h">
+  <div class="wrap">
+    <span class="kick reveal">Customers hang up on bots</span>
+    <h2 id="clara-h" class="reveal">Don't take our word for it.<br>Hear Clara for yourself.</h2>
+    <p class="lede reveal">Your customers have been burned by robotic phone trees and call centers they can barely understand. Clara sounds like the best receptionist you ever had, and she never takes a night off.</p>
+
+    <div class="clara-grid">
+      <div class="points">
+        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div><h3>No hold music. No script.</h3><p>No struggling to understand the person on the other end. Just a clear, calm voice that gets the customer taken care of.</p></div></div>
+        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><h3>Books real jobs on your calendar</h3><p>Real arrival windows, not "someone will call you back." She asks about the equipment, the symptoms and where the unit is.</p></div></div>
+        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div><div><h3>English or Spanish</h3><p>She answers in the caller's language, with your company's name.</p></div></div>
+        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><div><h3>Always offers a real person</h3><p>If a caller wants a human, Clara says yes. Every call is recorded and transcribed into the customer's file.</p></div></div>
+      </div>
+
+      <div class="reveal">
+        <div class="player">
+          <div class="ph-top">
+            <button class="play" id="play" aria-label="Play Clara's after-hours call"><svg id="pi" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+            <div class="ph-meta"><b>A real after-hours call</b><span>Clara · Sunshine Comfort (demo company)</span></div>
+            <div class="prog" id="ptime">1:23</div>
+          </div>
+          <div class="track"><i id="ptrack"></i></div>
+          <div class="chat" id="chat" aria-live="polite"><p class="empty" id="empty">Press play. Turn your sound on and listen to Clara book an emergency call at 9 p.m.</p></div>
+          <audio id="audio" src="/assets/media/clara-call.mp3" preload="none"></audio>
+        </div>
+        <a class="live-link" href="/demo#clara"><div><b>Talk to Clara live</b><br><span>Call her from your browser and try to stump her.</span></div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sleep" class="sec" aria-labelledby="sleep-h">
+  <div class="wrap">
+    <span class="kick reveal">On call used to mean no sleep</span>
+    <h2 id="sleep-h" class="reveal">Your on-call tech hasn't slept in a week.</h2>
+    <p class="lede reveal">On call used to mean answering every ring, all night, all week, even the calls that never turned into a job. With Clara, his phone rings only when a customer chooses help tonight.</p>
+
+    <div class="sleep-grid">
+      <div class="vidcard reveal">
+        <video id="oncall" muted loop playsinline preload="none" data-d="/assets/media/oncall-d" data-m="/assets/media/oncall-m"></video>
+        <span class="tag">Press 1 to accept</span>
+      </div>
+      <div>
+        <div class="example">An example night on call</div>
+        <div class="night">
+          <div class="call"><div class="t">9:12 PM</div><q>Can I get a price on a new system?</q><div class="out"><span>Clara books a visit for <b>tomorrow</b>.</span><span class="zz">Tech sleeps</span></div></div>
+          <div class="call"><div class="t">10:47 PM</div><q>Upstairs is warm. It can wait till morning.</q><div class="out"><span>Booked for <b>8 AM</b> on your calendar.</span><span class="zz">Tech sleeps</span></div></div>
+          <div class="call"><div class="t">11:58 PM</div><q>Do you service my area?</q><div class="out"><span>Clara answers and takes the details.</span><span class="zz">Tech sleeps</span></div></div>
+          <div class="call wake"><div class="t">1:36 AM</div><q>Our AC quit. It's 86 in here, and we have a newborn.</q><div class="out"><span>Customer chooses tonight. <b>Clara calls the on-call tech.</b></span><span class="zz">Press 1</span></div></div>
+          <div class="call"><div class="t">1:37 AM</div><q>Accepted.</q><div class="out"><span>The name, address and problem are already in a text on his phone.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rolling" aria-labelledby="roll-h">
+  <video id="rollvid" muted loop playsinline preload="none" data-d="/assets/media/rolling-d" data-m="/assets/media/rolling-m"></video>
+  <div class="inner">
+    <span class="kick reveal">Booked · dispatched · rolling</span>
+    <h2 id="roll-h" class="reveal">The job got booked while your office slept.</h2>
+    <p class="reveal">Clara answered, booked the call and woke the right tech, only because the customer asked for tonight. That's one less job lost to the next company on Google.</p>
+    <div class="row reveal"><a class="btn cyan" href="/start#book">Book a demo</a><a class="btn" href="/demo#clara">Talk to Clara live</a></div>
+  </div>
+</section>
+
+<section class="next">
+  <span class="kick">Preview · Act 1 of 3</span>
+  <h2>Next: the job, and the business you're building.</h2>
+  <p>Security, Quincy, inventory and fleet. Then retention, reviews and what your business is worth.</p>
+</section>
+
+<footer>
+  © 2026 Journey-HVAC · PO Box 1954, Ocala, FL 34478
+  <div style="margin-top:8px"><a href="/privacy.html">Privacy</a>·<a href="/terms.html">Terms</a>·<a href="/support">Support</a></div>
+</footer>
+
+<script>
+(function(){
+  var portrait = matchMedia('(max-aspect-ratio: 1/1)').matches;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* header */
+  var top = document.getElementById('top');
+  /* ---------- scroll-scrubbed film ---------- */
+  var N = 148, S = 10, C = 4, set = portrait ? 'm' : 'd', FW = portrait ? 720 : 1280, FH = portrait ? 1280 : 650;
+  var sheets = new Array(S), ready = new Array(S);
+  var cv = document.getElementById('film'), ctx = cv.getContext('2d');
+  var hero = document.getElementById('hero'), bar = document.getElementById('bar'), hint = document.getElementById('hint'), clock = document.getElementById('clock');
+  var beats = [].slice.call(document.querySelectorAll('.beat'));
+  var cur = -1, want = 0;
+  // frame i lives on sheet i%S, slot floor(i/S); each sheet spans the whole film, so the first sheet alone covers the scroll
+  function loadSheet(k){ var im = new Image(); im.decoding='async'; im.onload=function(){ ready[k]=true; draw(want,true) }; im.src='/assets/frames/'+set+'-'+k+'.webp'; sheets[k]=im }
+  loadSheet(0); for (var k=1;k<S;k++) (function(k){ setTimeout(function(){ loadSheet(k) }, 120*k) })(k);
+  function size(){ var d=Math.min(window.devicePixelRatio||1,2); cv.width=cv.clientWidth*d; cv.height=cv.clientHeight*d; draw(want,true) }
+  function has(i){ return ready[i%S] }
+  function nearest(i){ if(has(i)) return i; for(var r=1;r<N;r++){ if(i-r>=0&&has(i-r)) return i-r; if(i+r<N&&has(i+r)) return i+r } return -1 }
+  function draw(i,force){ var j=nearest(i); if(j<0||(j===cur&&!force)) return; cur=j;
+    var im=sheets[j%S], slot=Math.floor(j/S), sx=(slot%C)*FW, sy=Math.floor(slot/C)*FH;
+    var cw=cv.width,ch=cv.height,s=Math.max(cw/FW,ch/FH),w=FW*s,h=FH*s;
+    var x=(cw-w)*(portrait?.5:.62), y=(ch-h)/2; ctx.drawImage(im,sx,sy,FW,FH,x,y,w,h) }
+  function clamp(v){return v<0?0:v>1?1:v}
+  function times(p){ // 9:14 PM -> 9:17 PM across the scene
+    var m=14+Math.floor(p*4); return '9:'+(m<10?'0':'')+m+' PM' }
+  function tick(){
+    var r=hero.getBoundingClientRect(), vh=innerHeight, p=clamp(-r.top/(r.height-vh));
+    want=Math.min(N-1,Math.round(p*(N-1))); draw(want);
+    bar.style.width=(p*100)+'%'; hint.style.opacity=p>.02?0:1; clock.textContent=times(p);
+    beats.forEach(function(b){ var a=+b.dataset.in, z=+b.dataset.out, f=.06, o;
+      if(p<a-f||p>z+f) o=0; else if(p<a) o=(p-(a-f))/f; else if(p>z) o=1-(p-z)/f; else o=1;
+      if(a===0&&p<f) o=1;
+      b.style.opacity=o; b.style.transform=(portrait?'translateY(':'translateY(calc(-50% + ')+((1-o)*24)+'px'+(portrait?')':'))'); b.classList.toggle('live',o>.5) });
+    top.classList.toggle('solid', r.bottom<vh*.5);
+  }
+  var ticking=false; function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(function(){ticking=false;tick()})} }
+  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',function(){size();tick()});
+  size(); tick();
+
+  /* ---------- reveal on view ---------- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target)} })},{threshold:.15});
+  [].forEach.call(document.querySelectorAll('.reveal'),function(el){io.observe(el)});
+
+  /* ---------- night timeline ---------- */
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){ e.target.classList.toggle('on', e.isIntersecting) })},{rootMargin:'-30% 0px -30% 0px'});
+  [].forEach.call(document.querySelectorAll('.call'),function(el){cio.observe(el)});
+
+  /* ---------- background videos play only in view ---------- */
+  [].forEach.call(document.querySelectorAll('video[data-d]'),function(v){
+    var base=portrait?v.dataset.m:v.dataset.d; v.poster=base+'.jpg';
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){ if(!v.src) v.src=base+'.mp4'; if(!reduce) v.play().catch(function(){}) } else v.pause() })},{threshold:.2});
+    vio.observe(v) });
+
+  /* ---------- Clara call player with live transcript ---------- */
+  var lines=[
+   [5.55,'clara','Thanks for calling Sunshine Comfort, this is Clara. How can I help?'],
+   [9.49,'caller',"Our AC quit, it's 86 in here, and we have a newborn."],
+   [14.37,'clara',"I'm so sorry. Let's get you taken care of."],
+   [17.54,'clara','May I have your name?'],
+   [19.54,'caller','Dana Whitfield.'],
+   [21.34,'clara','Thanks, Dana. And the service address?'],
+   [24.11,'caller','2207 Magnolia Ridge Drive, Ocala.'],
+   [27.91,'clara','Is that a house, a condo, or a mobile home?'],
+   [30.98,'caller','A house.'],
+   [32.06,'clara',"And where's the indoor unit — garage, closet, or attic?"],
+   [36.0,'caller',"It's in the garage."],
+   [37.53,'clara','Tonight adds an after-hours fee, or I can book 8 AM tomorrow.'],
+   [41.41,'clara','Our on-call tech can also call you right now, free of charge.'],
+   [44.82,'caller',"Tonight, please. The baby can't wait."],
+   [49.8,'clara',"Got it. I've notified our on-call technician right now."],
+   [53.69,'clara',"He'll call you shortly to confirm. Hang tight, Dana."],
+   [59.05,'alert','Journey alert to the on-call tech: Emergency service call. Dana Whitfield. No cooling, newborn in the home.'],
+   [64.33,'alert','2207 Magnolia Ridge Drive, Ocala. Press 1 to accept.'],
+   [70.07,'alert','Accepted. The details are in a text on your phone.']
+  ];
+  var au=document.getElementById('audio'), btn=document.getElementById('play'), chat=document.getElementById('chat'), pt=document.getElementById('ptrack'), ptime=document.getElementById('ptime'), shown=0;
+  var who={clara:'Clara',caller:'Caller',alert:'Journey'};
+  function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+  function render(t){
+    if(t<0.2&&shown){ chat.innerHTML=''; shown=0 }
+    while(shown<lines.length&&lines[shown][0]<=t){ var l=lines[shown], d=document.createElement('div'); d.className='msg '+l[1]; d.innerHTML='<small>'+who[l[1]]+'</small>'; d.appendChild(document.createTextNode(l[2])); var e=document.getElementById('empty'); if(e) e.remove(); chat.appendChild(d); chat.scrollTop=chat.scrollHeight; shown++ }
+  }
+  btn.addEventListener('click',function(){ if(au.paused){ if(au.ended||au.currentTime>=au.duration-0.3){au.currentTime=0;chat.innerHTML='';shown=0} au.play() } else au.pause() });
+  au.addEventListener('play',function(){btn.classList.add('on');document.getElementById('pi').innerHTML='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';btn.setAttribute('aria-label','Pause')});
+  au.addEventListener('pause',function(){document.getElementById('pi').innerHTML='<path d="M7 4v16l13-8z"/>';btn.setAttribute('aria-label','Play Clara\'s after-hours call')});
+  au.addEventListener('timeupdate',function(){ render(au.currentTime); if(au.duration){pt.style.width=(au.currentTime/au.duration*100)+'%'; ptime.textContent=fmt(au.duration-au.currentTime)} });
+})();
+</script>
+</body>
+</html>
