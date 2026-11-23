@@ -4,95 +4,125 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Journey-HVAC — The office is closed. Clara is on the call.</title>
-<meta name="description" content="Journey-HVAC is HVAC software with agentic AI. Clara, the AI receptionist, answers after-hours calls, books real jobs and only wakes your on-call tech when a customer needs help tonight.">
+<meta name="description" content="HVAC software with agentic AI, built by a working HVAC contractor. Clara answers after-hours calls and books real jobs, your on-call tech sleeps, and your customers keep your app on their phone.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='4' y='4' width='92' height='92' rx='24' fill='%230C2A47'/><text x='50' y='74' font-size='66' font-weight='800' text-anchor='middle' fill='%2300B0F0' font-family='Georgia,serif'>J</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo+Black&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="/assets/frames/d-0.webp" media="(min-aspect-ratio: 1/1)">
-<link rel="preload" as="image" href="/assets/frames/m-0.webp" media="(max-aspect-ratio: 1/1)">
 <style>
-:root{--night:#050E19;--navy:#0C2A47;--deep:#071726;--cyan:#00B0F0;--cyan2:#5FD4FF;--ink:#0E1B2C;--soft:#C7D5E6;--muted:#8FA6BF;--ok:#2BD47D}
+:root{--night:#050E19;--navy:#0C2A47;--deep:#071726;--card:#0D2036;--cyan:#00B0F0;--cyan2:#5FD4FF;--ink:#0E1B2C;--soft:#C7D5E6;--muted:#8FA6BF;--ok:#2BD47D;--warn:#FFB547}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--night);color:#fff;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
-h1,h2,.display{font-family:'Archivo Black',Inter,sans-serif;font-weight:400;letter-spacing:-.01em;margin:0;line-height:1.02;text-wrap:balance}
+h1,h2,h3{font-family:'Archivo Black',Inter,sans-serif;font-weight:400;letter-spacing:-.01em;margin:0;line-height:1.04;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
+button{font-family:inherit}
 
 /* header */
-.top{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,40px);background:linear-gradient(180deg,rgba(5,14,25,.85),rgba(5,14,25,0));transition:background .3s}
+.top{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,4vw,40px);transition:background .3s}
 .top.solid{background:rgba(5,14,25,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
 .brand{display:flex;align-items:baseline;gap:2px;text-decoration:none;line-height:1}
 .brand .j{font-family:'Times New Roman',Times,serif;font-weight:700;color:var(--cyan);font-size:28px}
 .brand .h{font-family:'Arial Black','Archivo Black',sans-serif;color:#fff;font-size:17px;letter-spacing:.02em}
-.nav{display:flex;align-items:center;gap:6px}
+.nav{display:flex;align-items:center;gap:4px}
 .nav a{text-decoration:none;font-weight:600;font-size:14px;padding:10px 14px;border-radius:999px;color:#DCE7F3}
 .nav a:hover{background:rgba(255,255,255,.08)}
 .nav .cta{background:var(--cyan);color:#04121F;font-weight:800}
 .nav .cta:hover{background:var(--cyan2)}
-@media (max-width:720px){.nav .opt{display:none}.brand .j{font-size:24px}.brand .h{font-size:15px}}
+@media (max-width:820px){.nav .opt{display:none}.brand .j{font-size:24px}.brand .h{font-size:15px}}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:2px solid rgba(255,255,255,.28);color:#fff;background:transparent;cursor:pointer;font-family:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:2px solid rgba(255,255,255,.3);color:#fff;background:rgba(5,14,25,.3);cursor:pointer}
 .btn:hover{border-color:#fff}
 .btn.cyan{background:var(--cyan);border-color:var(--cyan);color:#04121F}
 .btn.cyan:hover{background:var(--cyan2);border-color:var(--cyan2)}
-
-/* ---------- ACT 1 · HERO (scroll-scrubbed film) ---------- */
-#hero{position:relative;height:520vh}
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
-#film{position:absolute;inset:0;width:100%;height:100%}
-.vignette{position:absolute;inset:0;pointer-events:none;background:
- linear-gradient(90deg,rgba(3,9,16,.82) 0%,rgba(3,9,16,.45) 38%,rgba(3,9,16,0) 62%),
- linear-gradient(180deg,rgba(3,9,16,.55) 0%,rgba(3,9,16,0) 30%,rgba(3,9,16,0) 70%,rgba(3,9,16,.6) 100%)}
-.beat{position:absolute;left:clamp(20px,6vw,88px);top:50%;transform:translateY(-50%);max-width:min(560px,86vw);opacity:0;transition:none;will-change:opacity,transform;pointer-events:none}
-.beat.live{pointer-events:auto}
 .kick{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
-.beat h1,.beat h2{font-size:clamp(38px,5.6vw,76px)}
-.beat p{margin-top:18px;font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:#DCE7F3;max-width:500px}
-.beat .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.beat em{font-style:normal;color:var(--cyan)}
-.hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C7D5E6;display:flex;flex-direction:column;align-items:center;gap:10px;transition:opacity .4s}
-.hint i{display:block;width:2px;height:38px;background:linear-gradient(var(--cyan),transparent);animation:drip 1.8s ease-in-out infinite}
-@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-.clock{position:absolute;right:clamp(20px,5vw,64px);top:92px;font-family:'Archivo Black',sans-serif;font-size:clamp(20px,2.2vw,28px);color:#fff;opacity:.9;display:flex;align-items:center;gap:10px}
-.clock small{font-family:Inter;font-weight:700;font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
-.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--cyan);width:0}
+
+/* ---------- HERO: the film plays on its own ---------- */
+#hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:#000}
+#film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(3,9,16,.86) 0%,rgba(3,9,16,.5) 40%,rgba(3,9,16,0) 66%),linear-gradient(180deg,rgba(3,9,16,.5) 0%,rgba(3,9,16,0) 25%,rgba(3,9,16,0) 72%,rgba(3,9,16,.75) 100%);transition:opacity .6s}
+.hero-copy{position:absolute;left:clamp(20px,6vw,88px);top:50%;transform:translateY(-50%);max-width:min(600px,88vw);transition:opacity .5s}
+.hero-copy h1{font-size:clamp(40px,6vw,84px)}
+.hero-copy h1 em{font-style:normal;color:var(--cyan)}
+.hero-copy p{margin-top:20px;font-size:clamp(17px,1.6vw,21px);line-height:1.45;color:#DCE7F3;max-width:520px}
+.hero-copy .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.watch{display:inline-flex;align-items:center;gap:14px;min-height:60px;padding:0 26px 0 8px;border-radius:999px;border:0;background:#fff;color:var(--ink);font-weight:800;font-size:16px;cursor:pointer}
+.watch .pb{width:46px;height:46px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;color:#04121F}
+.watch small{display:block;font-weight:600;font-size:12px;color:#51647A;text-align:left}
+.watching .hero-copy,.watching .shade{opacity:0;pointer-events:none}
+.filmbar{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:none;gap:10px;z-index:3}
+.watching .filmbar{display:flex}
+.filmbar button{min-height:46px;padding:0 20px;border-radius:999px;border:0;font-weight:800;cursor:pointer;background:rgba(5,14,25,.75);color:#fff;backdrop-filter:blur(6px)}
+.filmbar .cta{background:var(--cyan);color:#04121F}
 @media (max-aspect-ratio:1/1){
- .vignette{background:linear-gradient(180deg,rgba(3,9,16,.88) 0%,rgba(3,9,16,.5) 34%,rgba(3,9,16,0) 56%,rgba(3,9,16,0) 70%,rgba(3,9,16,.55) 100%)}
- .beat{top:96px;transform:none;left:20px;right:20px}
- .beat h1,.beat h2{font-size:clamp(32px,9vw,46px)}
- .clock{top:auto;bottom:22px;right:20px}
+ #film{object-position:50% 50%}
+ .shade{background:linear-gradient(180deg,rgba(3,9,16,.9) 0%,rgba(3,9,16,.55) 38%,rgba(3,9,16,0) 60%,rgba(3,9,16,.7) 100%)}
+ .hero-copy{top:92px;transform:none;left:20px;right:20px}
+ .hero-copy h1{font-size:clamp(34px,9.5vw,48px)}
+ .hero-copy p{display:none}
+ .hero-copy .row{margin-top:22px}
 }
 
-/* ---------- shared sections ---------- */
-.sec{position:relative;padding:clamp(80px,12vw,150px) clamp(20px,6vw,88px)}
+/* ---------- PAIN PICKER ---------- */
+.sec{position:relative;padding:clamp(72px,10vw,130px) clamp(20px,6vw,88px)}
 .wrap{max-width:1200px;margin:0 auto}
-.sec .kick{margin-bottom:18px}
-.sec h2{font-size:clamp(34px,4.6vw,62px)}
-.lede{margin-top:20px;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--soft);max-width:640px}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
+.sec h2{font-size:clamp(32px,4.4vw,58px)}
+.lede{margin-top:18px;font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:var(--soft);max-width:660px}
+#pains{background:radial-gradient(900px 500px at 90% 0%,rgba(0,176,240,.12),transparent 60%),var(--deep)}
+.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.group h3{font-family:Inter;font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.tiles{display:flex;flex-direction:column;gap:12px}
+.tile{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:18px;border-radius:18px;background:var(--card);border:1px solid rgba(255,255,255,.07);color:#fff;cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
+.tile:hover,.tile:focus-visible{transform:translateY(-3px);border-color:var(--cyan);background:#10294A;outline:none}
+.tile .ic{flex:0 0 46px;height:46px;border-radius:14px;background:rgba(0,176,240,.14);color:var(--cyan);display:flex;align-items:center;justify-content:center}
+.tile b{display:block;font-size:16.5px;line-height:1.3}
+.tile span{display:block;font-size:13.5px;color:var(--muted);margin-top:3px}
+.tile .go{margin-left:auto;color:var(--cyan);flex:0 0 auto}
+@media (max-width:960px){.groups{grid-template-columns:1fr}}
 
-/* ---------- ACT 1 · CLARA ---------- */
-#clara{background:radial-gradient(1200px 600px at 85% 10%,rgba(0,176,240,.14),transparent 60%),linear-gradient(180deg,#000 0%,var(--deep) 18%,var(--deep) 100%)}
-.clara-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:start;margin-top:56px}
-.points{display:flex;flex-direction:column;gap:22px}
-.pt{display:flex;gap:16px;align-items:flex-start}
-.pt .dot{flex:0 0 40px;height:40px;border-radius:12px;background:rgba(0,176,240,.14);display:flex;align-items:center;justify-content:center;color:var(--cyan)}
-.pt h3{margin:0 0 4px;font-size:19px;font-weight:800}
-.pt p{color:var(--soft);font-size:16.5px;line-height:1.5}
+/* panel */
+.panel{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(2,7,13,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.panel.open{display:flex;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.sheet{position:relative;width:min(1080px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:26px;background:linear-gradient(180deg,#0E2238,#0A1A2C);border:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:1.05fr 1fr;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:rise .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+.media{position:relative;background:#000;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.media video,.media>img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.media .phone{position:relative;width:min(270px,70%);border:8px solid #0E1B2C;border-radius:34px;overflow:hidden;background:#0E1B2C;box-shadow:0 20px 50px rgba(0,0,0,.5);margin:28px 0}
+.media .phone img{display:block;width:100%}
+.media.soft{background:radial-gradient(circle at 50% 40%,#123659,#071726 70%)}
+.media .bigic{width:120px;height:120px;border-radius:32px;background:rgba(0,176,240,.15);color:var(--cyan);display:flex;align-items:center;justify-content:center}
+.copy{padding:clamp(26px,3.4vw,44px);display:flex;flex-direction:column}
+.pain{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);margin-bottom:10px}
+.copy h3{font-size:clamp(26px,2.6vw,36px)}
+.copy ul{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+.copy li{position:relative;padding-left:26px;font-size:16.5px;line-height:1.45;color:var(--soft)}
+.copy li:before{content:'';position:absolute;left:2px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:inset 0 0 0 4px #0E2238}
+.copy li b{color:#fff}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:28px}
+.x{position:absolute;right:14px;top:14px;z-index:3;width:44px;height:44px;border-radius:50%;border:0;background:rgba(5,14,25,.7);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.count{font-size:13px;color:var(--muted);margin-top:14px}
+.nightlist{position:absolute;left:16px;right:16px;top:16px;display:flex;flex-direction:column;gap:8px}
+.nl{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(5,14,25,.82);font-size:13.5px;opacity:0;transform:translateY(10px)}
+.nl.on{opacity:1;transform:none;transition:all .5s}
+.nl b{color:var(--cyan);font-family:'Archivo Black';font-size:12px;min-width:62px}
+.nl i{margin-left:auto;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:rgba(43,212,125,.16);color:var(--ok);white-space:nowrap}
+.nl.wake{border:1px solid var(--cyan)}.nl.wake i{background:var(--cyan);color:#04121F}
+@media (max-width:820px){.sheet{grid-template-columns:1fr;max-height:calc(100vh - 24px)}.media{min-height:300px}.panel{padding:12px;align-items:flex-end}}
+
+/* ---------- CLARA PLAYER ---------- */
+#clara{background:linear-gradient(180deg,var(--deep),#040B14)}
+.clara-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
 .player{background:linear-gradient(180deg,#0E2238,#0A1A2C);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:22px;box-shadow:0 40px 80px rgba(0,0,0,.45)}
 .ph-top{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.07)}
-.play{flex:0 0 60px;height:60px;border-radius:50%;border:0;background:var(--cyan);color:#04121F;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 0 0 rgba(0,176,240,.6);animation:pulse 2.4s infinite}
+.play{flex:0 0 62px;height:62px;border-radius:50%;border:0;background:var(--cyan);color:#04121F;display:flex;align-items:center;justify-content:center;cursor:pointer;animation:pulse 2.4s infinite}
 .play.on{animation:none}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,176,240,.55)}70%{box-shadow:0 0 0 18px rgba(0,176,240,0)}100%{box-shadow:0 0 0 0 rgba(0,176,240,0)}}
-.ph-meta b{display:block;font-size:16px}
-.ph-meta span{font-size:13px;color:var(--muted)}
+.ph-meta b{display:block;font-size:16px}.ph-meta span{font-size:13px;color:var(--muted)}
 .prog{margin-left:auto;font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted)}
-.track{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin:14px 0 4px;overflow:hidden}
-.track i{display:block;height:100%;width:0;background:var(--cyan)}
-.chat{height:420px;overflow-y:auto;padding:10px 4px 4px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;scrollbar-width:none}
+.track{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin:14px 0 4px;overflow:hidden}.track i{display:block;height:100%;width:0;background:var(--cyan)}
+.chat{height:400px;overflow-y:auto;padding:10px 4px 4px;display:flex;flex-direction:column;gap:10px;scrollbar-width:none}
 .chat::-webkit-scrollbar{display:none}
 .msg{max-width:84%;padding:11px 15px;border-radius:18px;font-size:15.5px;line-height:1.4;animation:pop .35s ease both}
 .msg small{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;opacity:.7}
@@ -101,10 +131,9 @@ p{margin:0;text-wrap:pretty}
 .msg.alert{align-self:center;max-width:92%;background:#12301E;border:1px solid rgba(43,212,125,.4);color:#D8FBE7;font-size:14.5px;border-radius:14px}
 .empty{margin:auto;text-align:center;color:var(--muted);font-size:15px;max-width:280px}
 @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.live-link{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-decoration:none}
-.live-link b{font-size:16px}.live-link span{color:var(--muted);font-size:14px}
-.live-link:hover{border-color:var(--cyan)}
-@media (max-width:900px){.clara-grid{grid-template-columns:1fr}.chat{height:360px}}
+.claims{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.claims div{font-size:17px;line-height:1.45;color:var(--soft)}.claims b{color:#fff}
+@media (max-width:900px){.clara-grid{grid-template-columns:1fr}.chat{height:340px}}
 
 /* ---------- ACT 1 · SLEEP ---------- */
 #sleep{background:linear-gradient(180deg,var(--deep),#040B14);padding-bottom:0}
@@ -137,14 +166,19 @@ p{margin:0;text-wrap:pretty}
 #rolling p{margin:22px auto 0;font-size:clamp(18px,1.7vw,22px);color:#DCE7F3;max-width:620px;line-height:1.5}
 #rolling .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
 
-.next{background:#040B14;text-align:center;padding:90px 20px 110px;border-top:1px solid rgba(255,255,255,.06)}
-.next .kick{margin-bottom:12px}
-.next h2{font-size:clamp(28px,3.4vw,44px)}
-.next p{color:var(--muted);margin-top:14px}
+
+/* ---------- FOUNDER + CTA ---------- */
+.founder{background:#040B14;border-top:1px solid rgba(255,255,255,.06)}
+.founder .q{font-family:'Archivo Black';font-size:clamp(24px,3vw,38px);line-height:1.2;max-width:900px}
+.founder .q em{font-style:normal;color:var(--cyan)}
+.founder p{margin-top:20px;color:var(--soft);font-size:18px;line-height:1.55;max-width:720px}
+.final{text-align:center;background:linear-gradient(180deg,#040B14,var(--navy))}
+.final h2{font-size:clamp(34px,4.6vw,60px)}
+.final .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
 footer{background:#02070D;color:var(--muted);font-size:13px;text-align:center;padding:34px 20px}
 footer a{color:var(--muted);margin:0 8px}
-
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.play{animation:none}.hint i{animation:none}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.play{animation:none}}
 </style>
 </head>
 <body>
@@ -152,72 +186,79 @@ footer a{color:var(--muted);margin:0 8px}
 <header class="top" id="top">
   <a class="brand" href="/" aria-label="Journey-HVAC home"><span class="j">Journey</span><span class="h">-HVAC</span></a>
   <nav class="nav">
+    <a class="opt" href="/">Home</a>
+    <a class="opt" href="#pains">What it fixes</a>
     <a class="opt" href="#clara">Hear Clara</a>
-    <a class="opt" href="/demo#clara">Talk to Clara live</a>
     <a class="opt" href="/signup">Sign up</a>
     <a class="cta" href="/start#book">Book a demo</a>
   </nav>
 </header>
 
-<!-- ===================== ACT 1 · THE NIGHT ===================== -->
-<section id="hero" aria-label="After hours">
-  <div class="stage">
-    <canvas id="film" aria-hidden="true"></canvas>
-    <div class="vignette"></div>
+<section id="hero">
+  <video id="film" autoplay muted loop playsinline preload="auto" aria-label="Film: an after-hours call answered by Clara"></video>
+  <div class="shade"></div>
+  <div class="hero-copy">
+    <span class="kick">HVAC software with agentic AI</span>
+    <h1>The office is closed. <em>Clara is on the call.</em></h1>
+    <p>When a customer's AC quits at 9 p.m., Clara answers, books the job and wakes your on-call tech only if they need help tonight. Built by a working HVAC contractor.</p>
+    <div class="row">
+      <button class="watch" id="watch"><span class="pb"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span><span>Watch the film<small>1 minute · sound on</small></span></button>
+      <a class="btn cyan" href="/start#book">Book a demo</a>
+    </div>
+  </div>
+  <div class="filmbar"><button id="mute">Sound off</button><button id="closefilm">Back</button><a class="btn cyan" style="min-height:46px" href="/start#book">Book a demo</a></div>
+</section>
 
-    <div class="clock" aria-hidden="true"><small>After hours</small><span id="clock">9:14 PM</span></div>
-
-    <div class="beat" data-in="0" data-out=".2">
-      <span class="kick">Journey-HVAC · AI receptionist</span>
-      <h1>It's 9:14 PM. Your phone rings.</h1>
-      <p>Every HVAC shop knows this call. A customer with no cooling, and an office that closed hours ago.</p>
-    </div>
-    <div class="beat" data-in=".22" data-out=".44">
-      <h2><em>Clara</em> answers.<br>First ring.</h2>
-      <p>Journey's AI receptionist picks up day or night, in English or Spanish. She asks the right questions and books the job.</p>
-    </div>
-    <div class="beat" data-in=".5" data-out=".72">
-      <h2>Without her, it's voicemail.</h2>
-      <p>A customer with no cooling doesn't leave a message. She calls the next company on Google, and that job is gone for good.</p>
-    </div>
-    <div class="beat" data-in=".8" data-out="1.01">
-      <h2>The office is closed.<br><em>Clara is on the call.</em></h2>
-      <p>Never lose an after-hours job again.</p>
-      <div class="row"><a class="btn cyan" href="/start#book">Book a demo</a><a class="btn" href="#clara">Hear the call</a></div>
-    </div>
-
-    <div class="hint" id="hint"><span>Scroll</span><i></i></div>
-    <div class="bar" id="bar"></div>
+<section id="pains" class="sec">
+  <div class="wrap">
+    <span class="kick reveal">Pick your headache</span>
+    <h2 class="reveal">What's costing your shop money right now?</h2>
+    <p class="lede reveal">Tap any one. We'll show you exactly how Journey handles it, with the real product.</p>
+    <div class="groups" id="groups"></div>
   </div>
 </section>
 
-<section id="clara" class="sec" aria-labelledby="clara-h">
-  <div class="wrap">
-    <span class="kick reveal">Customers hang up on bots</span>
-    <h2 id="clara-h" class="reveal">Don't take our word for it.<br>Hear Clara for yourself.</h2>
-    <p class="lede reveal">Your customers have been burned by robotic phone trees and call centers they can barely understand. Clara sounds like the best receptionist you ever had, and she never takes a night off.</p>
-
-    <div class="clara-grid">
-      <div class="points">
-        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div><h3>No hold music. No script.</h3><p>No struggling to understand the person on the other end. Just a clear, calm voice that gets the customer taken care of.</p></div></div>
-        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><h3>Books real jobs on your calendar</h3><p>Real arrival windows, not "someone will call you back." She asks about the equipment, the symptoms and where the unit is.</p></div></div>
-        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div><div><h3>English or Spanish</h3><p>She answers in the caller's language, with your company's name.</p></div></div>
-        <div class="pt reveal"><div class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><div><h3>Always offers a real person</h3><p>If a caller wants a human, Clara says yes. Every call is recorded and transcribed into the customer's file.</p></div></div>
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="p-h">
+  <div class="sheet">
+    <button class="x" id="px" aria-label="Close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="media" id="p-media"></div>
+    <div class="copy">
+      <div class="pain" id="p-pain"></div>
+      <h3 id="p-h"></h3>
+      <ul id="p-list"></ul>
+      <div class="acts">
+        <a class="btn cyan" href="/start#book">Book a demo</a>
+        <button class="btn" id="p-next">Next headache →</button>
       </div>
+      <div class="count" id="p-count"></div>
+    </div>
+  </div>
+</div>
 
-      <div class="reveal">
-        <div class="player">
-          <div class="ph-top">
-            <button class="play" id="play" aria-label="Play Clara's after-hours call"><svg id="pi" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
-            <div class="ph-meta"><b>A real after-hours call</b><span>Clara · Sunshine Comfort (demo company)</span></div>
-            <div class="prog" id="ptime">1:23</div>
-          </div>
-          <div class="track"><i id="ptrack"></i></div>
-          <div class="chat" id="chat" aria-live="polite"><p class="empty" id="empty">Press play. Turn your sound on and listen to Clara book an emergency call at 9 p.m.</p></div>
-          <audio id="audio" src="/assets/media/clara-call.mp3" preload="none"></audio>
+<section id="clara" class="sec">
+  <div class="wrap clara-grid">
+    <div>
+      <span class="kick reveal">Customers hang up on bots</span>
+      <h2 class="reveal">Don't take our word for it. Hear Clara.</h2>
+      <p class="lede reveal">Your customers have been burned by robotic phone trees and call centers they can barely understand. Press play on a real after-hours call.</p>
+      <div class="claims reveal">
+        <div><b>No hold music. No script.</b> No struggling to understand the person on the other end.</div>
+        <div><b>English or Spanish,</b> answering with your company's name.</div>
+        <div><b>Always offers a real person.</b> Every call is recorded and transcribed into the customer's file.</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="player">
+        <div class="ph-top">
+          <button class="play" id="play" aria-label="Play Clara's after-hours call"><svg id="pi" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+          <div class="ph-meta"><b>A real after-hours call</b><span>Clara · Sunshine Comfort (demo company)</span></div>
+          <div class="prog" id="ptime">1:23</div>
         </div>
-        <a class="live-link" href="/demo#clara"><div><b>Talk to Clara live</b><br><span>Call her from your browser and try to stump her.</span></div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="track"><i id="ptrack"></i></div>
+        <div class="chat" id="chat" aria-live="polite"><p class="empty" id="empty">Press play with your sound on. Listen to Clara book an emergency call at 9 p.m.</p></div>
+        <audio id="audio" src="/assets/media/clara-call.mp3" preload="none"></audio>
       </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px"><a class="btn" href="/demo#clara">Talk to Clara live</a><a class="btn cyan" href="/start#book">Book a demo</a></div>
     </div>
   </div>
 </section>
@@ -257,105 +298,155 @@ footer a{color:var(--muted);margin:0 8px}
   </div>
 </section>
 
-<section class="next">
-  <span class="kick">Preview · Act 1 of 3</span>
-  <h2>Next: the job, and the business you're building.</h2>
-  <p>Security, Quincy, inventory and fleet. Then retention, reviews and what your business is worth.</p>
+<section class="sec founder">
+  <div class="wrap">
+    <span class="kick reveal">Why Journey exists</span>
+    <div class="q reveal">"After two years of HVAC school, the first company I applied to said I didn't need technical skills. I could make as much as I wanted as a <em>sales technician</em>."</div>
+    <p class="reveal">Journey was built inside a working HVAC company in Central Florida by a contractor who wanted the honest version: readings shown next to every recommendation, analysis kept separate from the sales offer, and tools that are allowed to say "your system is fine." It's how a small shop competes with the big ones.</p>
+  </div>
+</section>
+
+<section class="sec final">
+  <h2 class="reveal">See it working on your shop.</h2>
+  <p class="lede reveal" style="margin:18px auto 0">A one-on-one demo with Lloyd, the contractor who built it.</p>
+  <div class="row reveal"><a class="btn cyan" href="/start#book">Book a demo</a><a class="btn" href="/signup">Start your account</a></div>
 </section>
 
 <footer>
   © 2026 Journey-HVAC · PO Box 1954, Ocala, FL 34478
-  <div style="margin-top:8px"><a href="/privacy.html">Privacy</a>·<a href="/terms.html">Terms</a>·<a href="/support">Support</a></div>
+  <div style="margin-top:8px"><a href="/">Home</a>·<a href="/demo">Watch the tour</a>·<a href="/privacy.html">Privacy</a>·<a href="/terms.html">Terms</a>·<a href="/support">Support</a></div>
 </footer>
 
 <script>
 (function(){
   var portrait = matchMedia('(max-aspect-ratio: 1/1)').matches;
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sfx = portrait ? '-m' : '-d';
+  var top = document.getElementById('top'), hero = document.getElementById('hero');
 
-  /* header */
-  var top = document.getElementById('top');
-  /* ---------- scroll-scrubbed film ---------- */
-  var N = 148, S = 10, C = 4, set = portrait ? 'm' : 'd', FW = portrait ? 720 : 1280, FH = portrait ? 1280 : 650;
-  var sheets = new Array(S), ready = new Array(S);
-  var cv = document.getElementById('film'), ctx = cv.getContext('2d');
-  var hero = document.getElementById('hero'), bar = document.getElementById('bar'), hint = document.getElementById('hint'), clock = document.getElementById('clock');
-  var beats = [].slice.call(document.querySelectorAll('.beat'));
-  var cur = -1, want = 0;
-  // frame i lives on sheet i%S, slot floor(i/S); each sheet spans the whole film, so the first sheet alone covers the scroll
-  function loadSheet(k){ var im = new Image(); im.decoding='async'; im.onload=function(){ ready[k]=true; draw(want,true) }; im.src='/assets/frames/'+set+'-'+k+'.webp'; sheets[k]=im }
-  loadSheet(0); for (var k=1;k<S;k++) (function(k){ setTimeout(function(){ loadSheet(k) }, 120*k) })(k);
-  function size(){ var d=Math.min(window.devicePixelRatio||1,2); cv.width=cv.clientWidth*d; cv.height=cv.clientHeight*d; draw(want,true) }
-  function has(i){ return ready[i%S] }
-  function nearest(i){ if(has(i)) return i; for(var r=1;r<N;r++){ if(i-r>=0&&has(i-r)) return i-r; if(i+r<N&&has(i+r)) return i+r } return -1 }
-  function draw(i,force){ var j=nearest(i); if(j<0||(j===cur&&!force)) return; cur=j;
-    var im=sheets[j%S], slot=Math.floor(j/S), sx=(slot%C)*FW, sy=Math.floor(slot/C)*FH;
-    var cw=cv.width,ch=cv.height,s=Math.max(cw/FW,ch/FH),w=FW*s,h=FH*s;
-    var x=(cw-w)*(portrait?.5:.62), y=(ch-h)/2; ctx.drawImage(im,sx,sy,FW,FH,x,y,w,h) }
-  function clamp(v){return v<0?0:v>1?1:v}
-  function times(p){ // 9:14 PM -> 9:17 PM across the scene
-    var m=14+Math.floor(p*4); return '9:'+(m<10?'0':'')+m+' PM' }
-  function tick(){
-    var r=hero.getBoundingClientRect(), vh=innerHeight, p=clamp(-r.top/(r.height-vh));
-    want=Math.min(N-1,Math.round(p*(N-1))); draw(want);
-    bar.style.width=(p*100)+'%'; hint.style.opacity=p>.02?0:1; clock.textContent=times(p);
-    beats.forEach(function(b){ var a=+b.dataset.in, z=+b.dataset.out, f=.06, o;
-      if(p<a-f||p>z+f) o=0; else if(p<a) o=(p-(a-f))/f; else if(p>z) o=1-(p-z)/f; else o=1;
-      if(a===0&&p<f) o=1;
-      b.style.opacity=o; b.style.transform=(portrait?'translateY(':'translateY(calc(-50% + ')+((1-o)*24)+'px'+(portrait?')':'))'); b.classList.toggle('live',o>.5) });
-    top.classList.toggle('solid', r.bottom<vh*.5);
+  /* ---------- hero film: plays by itself, one click for sound ---------- */
+  var film = document.getElementById('film');
+  film.poster = '/assets/media/film' + sfx + '.jpg'; film.src = '/assets/media/film' + sfx + '.mp4';
+  film.play().catch(function(){});
+  var mute = document.getElementById('mute');
+  function watch(){ hero.classList.add('watching'); film.currentTime = 0; film.muted = false; film.loop = false; film.play().catch(function(){}); mute.textContent = 'Sound off' }
+  function unwatch(){ hero.classList.remove('watching'); film.muted = true; film.loop = true; film.play().catch(function(){}) }
+  document.getElementById('watch').addEventListener('click', watch);
+  document.getElementById('closefilm').addEventListener('click', unwatch);
+  mute.addEventListener('click', function(){ film.muted = !film.muted; mute.textContent = film.muted ? 'Sound on' : 'Sound off' });
+  film.addEventListener('ended', function(){ unwatch(); document.getElementById('pains').scrollIntoView({behavior:'smooth'}) });
+
+  addEventListener('scroll', function(){ top.classList.toggle('solid', scrollY > 40) }, {passive:true});
+
+  /* ---------- pain picker ---------- */
+  var I = {
+    phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
+    voice:'<path d="M3 12h3l3 7 4-14 3 7h5"/>',
+    moon:'<path d="M20 15A8 8 0 1 1 9 4a7 7 0 0 0 11 11z"/>',
+    shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+    wrench:'<path d="M14 6a4 4 0 0 0 5 5l-9 9a2.1 2.1 0 0 1-3-3l9-9a4 4 0 0 0-2-2z"/>',
+    box:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
+    truck:'<path d="M2 7h11v9H2zM13 10h4l3 3v3h-7"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
+    app:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/>',
+    star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
+    value:'<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>'
+  };
+  function ic(n,s){ return '<svg width="'+(s||22)+'" height="'+(s||22)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+I[n]+'</svg>' }
+  var P = [
+    {g:'Your nights', i:'phone', t:'After-hours calls go to voicemail', s:'and the job goes to the next company',
+     pain:'The headache: lost after-hours jobs', h:'Clara answers every call. Day or night.',
+     li:['<b>Picks up on the first ring,</b> 24/7, with your company\'s name.','<b>Books real arrival windows</b> on your live calendar, not "someone will call you back."','<b>Asks the right questions:</b> the problem, the equipment, house or condo, where the unit is.','<b>Every call recorded and transcribed</b> into the customer\'s file.'],
+     m:{v:'rolling'}},
+    {g:'Your nights', i:'voice', t:'Customers hang up on bots', s:'and on call centers they can\'t understand',
+     pain:'The headache: callers who won\'t talk to a robot', h:'She doesn\'t sound like one. Listen.',
+     li:['<b>No hold music. No script.</b> No struggling to understand the person on the other end.','<b>English or Spanish,</b> and she switches when the caller does.','<b>Always offers a real person</b> when a caller asks.','<b>Press play below</b> and hear a real after-hours call, start to finish.'],
+     m:{play:true}},
+    {g:'Your nights', i:'moon', t:'Your on-call tech never sleeps', s:'up and down all night, all week',
+     pain:'The headache: on-call burnout', h:'His phone rings only when a customer chooses tonight.',
+     li:['<b>Clara takes every after-hours call</b> so your tech doesn\'t have to.','<b>Most callers book the morning,</b> at the regular rate.','<b>Only a customer who wants help tonight</b> wakes him: Clara calls him, he presses 1.','<b>The name, address and problem</b> are already in a text on his phone.'],
+     m:{v:'oncall', night:true}},
+    {g:'Out on the job', i:'shield', t:'Techs walk off with your customers', s:'and your customer info',
+     pain:'The headache: protecting your business', h:'Your techs, your customers, protected.',
+     li:['<b>Hidden phone numbers.</b> Techs call and text customers without ever seeing their personal number.','<b>Every text on record,</b> in your office inbox.','<b>GPS while on the clock,</b> and only while on the clock.','<b>Alerts when the app is opened on an unknown device.</b>'],
+     m:{img:'f_super', phone:true}},
+    {g:'Out on the job', i:'wrench', t:'Stuck on a tough diagnosis', s:'and the office can\'t help',
+     pain:'The headache: a tech stuck at the unit', h:'Ask Quincy. Right in the field app.',
+     li:['<b>Quincy is built into the app,</b> not a separate tool or a phone call to the shop.','<b>Help diagnosing and repairing</b> the system in front of the tech.','<b>AI drafts the scope of work</b> for the estimate.','<b>Readings sit next to every recommendation</b> the customer sees.'],
+     m:{img:'f_estimate', phone:true}},
+    {g:'Out on the job', i:'box', t:'Parts disappear', s:'and nobody knows what\'s on the truck',
+     pain:'The headache: inventory nobody tracks', h:'Automated inventory control, sized for a small shop.',
+     li:['<b>Stock levels for the shop and every truck,</b> kept up to date as parts move.','<b>Par levels and reorder points,</b> so you restock before a tech runs out.','<b>Every part used is logged against the job</b> it went into.'],
+     m:{big:'box'}},
+    {g:'Out on the job', i:'truck', t:'Trucks are a black box', s:'where they are and what they need',
+     pain:'The headache: running a fleet by memory', h:'Fleet management, built in.',
+     li:['<b>Every truck in one place:</b> who drives it, the odometer and its service history.','<b>Registration and insurance reminders</b> before they expire.','<b>Problems reported from the field,</b> tracked until they\'re fixed.','<b>Fuel and mileage checks,</b> plus where the truck is while the tech is on the clock.'],
+     m:{big:'truck'}},
+    {g:'Your business', i:'app', t:'Customers forget your name', s:'by next summer',
+     pain:'The headache: one-time customers', h:'Your app. Your name. On their phone.',
+     li:['<b>Your company name and logo,</b> not ours.','<b>Their equipment, warranty and every visit,</b> with System Health explained in plain words.','<b>Book service, pay by card and order filters</b> in a tap.','<b>When the AC quits,</b> they open your app, not Google.'],
+     m:{img:'portal_home', phone:true}},
+    {g:'Your business', i:'star', t:'Happy customers never leave reviews', s:'and unhappy ones always do',
+     pain:'The headache: reviews', h:'Reviews that ask for themselves.',
+     li:['<b>Review requests go out after the job,</b> automatically, while the visit is fresh.','<b>See who was asked,</b> who left a review and the rating they gave.','<b>More reviews, without your techs</b> having to ask on the doorstep.'],
+     m:{big:'star'}},
+    {g:'Your business', i:'value', t:'Your business is only worth its trucks', s:'when it\'s time to sell',
+     pain:'The headache: what a buyer will actually pay for', h:'Build a business someone will want to buy.',
+     li:['<b>Trucks lose value every year.</b> A buyer pays for your customer list and your maintenance agreements.','<b>AI tracks every agreement,</b> schedules the visits and handles the billing.','<b>Every customer\'s history</b> stays in one place, ready to hand over.'],
+     m:{img:'portal_appts', phone:true}}
+  ];
+  var groups = document.getElementById('groups'), byG = {};
+  P.forEach(function(p,k){
+    if(!byG[p.g]){ var g=document.createElement('div'); g.className='group reveal'; g.innerHTML='<h3>'+p.g+'</h3><div class="tiles"></div>'; groups.appendChild(g); byG[p.g]=g.lastChild }
+    var b=document.createElement('button'); b.className='tile'; b.type='button';
+    b.innerHTML='<div class="ic">'+ic(p.i)+'</div><div><b>'+p.t+'</b><span>'+p.s+'</span></div><svg class="go" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    b.addEventListener('click',function(){ open(k) }); byG[p.g].appendChild(b) });
+
+  var panel=document.getElementById('panel'), media=document.getElementById('p-media'), at=0, timers=[];
+  function open(k){
+    at=k; var p=P[k]; timers.forEach(clearTimeout); timers=[];
+    document.getElementById('p-pain').textContent=p.pain;
+    document.getElementById('p-h').textContent=p.h;
+    document.getElementById('p-list').innerHTML=p.li.map(function(x){return '<li>'+x+'</li>'}).join('');
+    document.getElementById('p-count').textContent=(k+1)+' of '+P.length;
+    media.className='media'; media.innerHTML='';
+    if(p.m.v){ var v=document.createElement('video'); v.muted=true; v.loop=true; v.playsInline=true; v.autoplay=true; v.poster='/assets/media/'+p.m.v+sfx+'.jpg'; v.src='/assets/media/'+p.m.v+sfx+'.mp4'; media.appendChild(v); v.play().catch(function(){});
+      if(p.m.night){ var nl=document.createElement('div'); nl.className='nightlist';
+        nl.innerHTML=[['9:12 PM','Price on a new system','Booked tomorrow'],['10:47 PM','Upstairs is warm, can wait','Booked 8 AM'],['11:58 PM','Do you service my area?','Answered'],['1:36 AM','No cooling, newborn','Press 1']].map(function(r,i){return '<div class="nl'+(i==3?' wake':'')+'"><b>'+r[0]+'</b>'+r[1]+'<i>'+(i==3?r[2]:'Tech sleeps')+'</i></div>'}).join('');
+        media.appendChild(nl); [].forEach.call(nl.children,function(c,i){ timers.push(setTimeout(function(){c.classList.add('on')},500+i*900)) }) } }
+    else if(p.m.img){ media.classList.add('soft'); media.innerHTML='<div class="phone"><img src="/assets/shots/'+p.m.img+'.jpg" alt=""></div>' }
+    else if(p.m.play){ media.classList.add('soft'); media.innerHTML='<button class="play" id="pp" aria-label="Play the call" style="width:110px;height:110px;flex-basis:110px"><svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>';
+      document.getElementById('pp').onclick=function(){ close(); document.getElementById('clara').scrollIntoView({behavior:'smooth'}); setTimeout(function(){ startCall() },700) } }
+    else { media.classList.add('soft'); media.innerHTML='<div class="bigic">'+ic(p.m.big,56)+'</div>' }
+    panel.classList.add('open'); document.body.style.overflow='hidden';
   }
-  var ticking=false; function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(function(){ticking=false;tick()})} }
-  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',function(){size();tick()});
-  size(); tick();
+  function close(){ panel.classList.remove('open'); document.body.style.overflow=''; media.innerHTML=''; timers.forEach(clearTimeout) }
+  document.getElementById('px').onclick=close;
+  document.getElementById('p-next').onclick=function(){ open((at+1)%P.length) };
+  panel.addEventListener('click',function(e){ if(e.target===panel) close() });
+  addEventListener('keydown',function(e){ if(!panel.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowRight') open((at+1)%P.length); if(e.key==='ArrowLeft') open((at+P.length-1)%P.length) });
 
-  /* ---------- reveal on view ---------- */
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target)} })},{threshold:.15});
-  [].forEach.call(document.querySelectorAll('.reveal'),function(el){io.observe(el)});
 
-  /* ---------- night timeline ---------- */
+  /* ---------- night timeline + section videos ---------- */
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cio=new IntersectionObserver(function(es){es.forEach(function(e){ e.target.classList.toggle('on', e.isIntersecting) })},{rootMargin:'-30% 0px -30% 0px'});
   [].forEach.call(document.querySelectorAll('.call'),function(el){cio.observe(el)});
-
-  /* ---------- background videos play only in view ---------- */
   [].forEach.call(document.querySelectorAll('video[data-d]'),function(v){
     var base=portrait?v.dataset.m:v.dataset.d; v.poster=base+'.jpg';
     var vio=new IntersectionObserver(function(es){es.forEach(function(e){
       if(e.isIntersecting){ if(!v.src) v.src=base+'.mp4'; if(!reduce) v.play().catch(function(){}) } else v.pause() })},{threshold:.2});
     vio.observe(v) });
+  /* ---------- reveal ---------- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target)} })},{threshold:.12});
+  [].forEach.call(document.querySelectorAll('.reveal'),function(el){io.observe(el)});
 
-  /* ---------- Clara call player with live transcript ---------- */
-  var lines=[
-   [5.55,'clara','Thanks for calling Sunshine Comfort, this is Clara. How can I help?'],
-   [9.49,'caller',"Our AC quit, it's 86 in here, and we have a newborn."],
-   [14.37,'clara',"I'm so sorry. Let's get you taken care of."],
-   [17.54,'clara','May I have your name?'],
-   [19.54,'caller','Dana Whitfield.'],
-   [21.34,'clara','Thanks, Dana. And the service address?'],
-   [24.11,'caller','2207 Magnolia Ridge Drive, Ocala.'],
-   [27.91,'clara','Is that a house, a condo, or a mobile home?'],
-   [30.98,'caller','A house.'],
-   [32.06,'clara',"And where's the indoor unit — garage, closet, or attic?"],
-   [36.0,'caller',"It's in the garage."],
-   [37.53,'clara','Tonight adds an after-hours fee, or I can book 8 AM tomorrow.'],
-   [41.41,'clara','Our on-call tech can also call you right now, free of charge.'],
-   [44.82,'caller',"Tonight, please. The baby can't wait."],
-   [49.8,'clara',"Got it. I've notified our on-call technician right now."],
-   [53.69,'clara',"He'll call you shortly to confirm. Hang tight, Dana."],
-   [59.05,'alert','Journey alert to the on-call tech: Emergency service call. Dana Whitfield. No cooling, newborn in the home.'],
-   [64.33,'alert','2207 Magnolia Ridge Drive, Ocala. Press 1 to accept.'],
-   [70.07,'alert','Accepted. The details are in a text on your phone.']
-  ];
-  var au=document.getElementById('audio'), btn=document.getElementById('play'), chat=document.getElementById('chat'), pt=document.getElementById('ptrack'), ptime=document.getElementById('ptime'), shown=0;
-  var who={clara:'Clara',caller:'Caller',alert:'Journey'};
+  /* ---------- Clara call with live transcript ---------- */
+  var lines=[[5.55,'clara','Thanks for calling Sunshine Comfort, this is Clara. How can I help?'],[9.49,'caller',"Our AC quit, it's 86 in here, and we have a newborn."],[14.37,'clara',"I'm so sorry. Let's get you taken care of."],[17.54,'clara','May I have your name?'],[19.54,'caller','Dana Whitfield.'],[21.34,'clara','Thanks, Dana. And the service address?'],[24.11,'caller','2207 Magnolia Ridge Drive, Ocala.'],[27.91,'clara','Is that a house, a condo, or a mobile home?'],[30.98,'caller','A house.'],[32.06,'clara',"And where's the indoor unit — garage, closet, or attic?"],[36.0,'caller',"It's in the garage."],[37.53,'clara','Tonight adds an after-hours fee, or I can book 8 AM tomorrow.'],[41.41,'clara','Our on-call tech can also call you right now, free of charge.'],[44.82,'caller',"Tonight, please. The baby can't wait."],[49.8,'clara',"Got it. I've notified our on-call technician right now."],[53.69,'clara',"He'll call you shortly to confirm. Hang tight, Dana."],[59.05,'alert','Journey alert to the on-call tech: Emergency service call. Dana Whitfield. No cooling, newborn in the home.'],[64.33,'alert','2207 Magnolia Ridge Drive, Ocala. Press 1 to accept.'],[70.07,'alert','Accepted. The details are in a text on your phone.']];
+  var au=document.getElementById('audio'), btn=document.getElementById('play'), chat=document.getElementById('chat'), pt=document.getElementById('ptrack'), ptime=document.getElementById('ptime'), shown=0, who={clara:'Clara',caller:'Caller',alert:'Journey'};
   function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
-  function render(t){
-    if(t<0.2&&shown){ chat.innerHTML=''; shown=0 }
-    while(shown<lines.length&&lines[shown][0]<=t){ var l=lines[shown], d=document.createElement('div'); d.className='msg '+l[1]; d.innerHTML='<small>'+who[l[1]]+'</small>'; d.appendChild(document.createTextNode(l[2])); var e=document.getElementById('empty'); if(e) e.remove(); chat.appendChild(d); chat.scrollTop=chat.scrollHeight; shown++ }
-  }
-  btn.addEventListener('click',function(){ if(au.paused){ if(au.ended||au.currentTime>=au.duration-0.3){au.currentTime=0;chat.innerHTML='';shown=0} au.play() } else au.pause() });
-  au.addEventListener('play',function(){btn.classList.add('on');document.getElementById('pi').innerHTML='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';btn.setAttribute('aria-label','Pause')});
-  au.addEventListener('pause',function(){document.getElementById('pi').innerHTML='<path d="M7 4v16l13-8z"/>';btn.setAttribute('aria-label','Play Clara\'s after-hours call')});
+  function render(t){ while(shown<lines.length&&lines[shown][0]<=t){ var l=lines[shown],d=document.createElement('div'); d.className='msg '+l[1]; d.innerHTML='<small>'+who[l[1]]+'</small>'; d.appendChild(document.createTextNode(l[2])); var e=document.getElementById('empty'); if(e) e.remove(); chat.appendChild(d); chat.scrollTop=chat.scrollHeight; shown++ } }
+  function startCall(){ if(au.ended||(au.duration&&au.currentTime>=au.duration-0.3)||au.currentTime===0){ au.currentTime=0; chat.innerHTML=''; shown=0 } if(!film.muted){ film.muted=true } au.play() }
+  btn.addEventListener('click',function(){ if(au.paused) startCall(); else au.pause() });
+  au.addEventListener('play',function(){btn.classList.add('on');document.getElementById('pi').innerHTML='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>'});
+  au.addEventListener('pause',function(){document.getElementById('pi').innerHTML='<path d="M7 4v16l13-8z"/>'});
   au.addEventListener('timeupdate',function(){ render(au.currentTime); if(au.duration){pt.style.width=(au.currentTime/au.duration*100)+'%'; ptime.textContent=fmt(au.duration-au.currentTime)} });
 })();
 </script>
