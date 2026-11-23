@@ -48,6 +48,10 @@
       }
     },
     {
+      "src": "/features/?",
+      "dest": "/features.html"
+    },
+    {
       "handle": "filesystem"
     }
   ]
