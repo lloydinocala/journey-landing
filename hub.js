@@ -33,7 +33,7 @@
       if (lead) {
         right.innerHTML = '<h3>2 · Confirm your setup call</h3>' + pick +
           '<p style="font-size:14px;color:#5C6B7A;margin-top:8px">Lloyd will call <b>' + esc(lead.name) + '</b> at <b>' + esc(lead.phone) + '</b>. We\'ll email the confirmation to ' + esc(lead.email) + '.</p>' +
-          '<form class="fm" onsubmit="return false"><label class="chk"><input type="checkbox" id="bk_rem" checked> Send me a confirmation and reminders (the day before and an hour before) by text or email. Msg &amp; data rates may apply; reply STOP to opt out.</label>' +
+          '<form class="fm" onsubmit="return false"><label class="chk"><input type="checkbox" id="bk_rem"> <span>Yes, text me a booking confirmation and reminders (the day before and an hour before) from Journey-HVAC at the phone number above. Up to 3 texts per booking. Msg &amp; data rates may apply. Reply HELP for help, STOP to opt out. Not required to book. <a href="/privacy.html" target="_blank">Privacy Policy</a> · <a href="/terms.html" target="_blank">Terms</a></span></label>' +
           '<button class="btn solid wide" id="bk_go"' + (state.slot ? '' : ' disabled') + '>Book my setup call</button><div class="msg" id="bk_msg"></div></form>';
       } else {
         right.innerHTML = '<h3>2 · Tell us who to call</h3>' + pick +
@@ -45,7 +45,7 @@
           '<div><label for="bk_lang">Language</label><select id="bk_lang"><option>English</option><option value="Spanish">Español</option></select></div></div>' +
           '<label for="bk_msg_in">Special interests</label><textarea id="bk_msg_in" rows="2" placeholder="What would you most like to see? e.g. dispatch, the AI receptionist, estimates"></textarea>' +
           '<div class="hp" aria-hidden="true"><label>Website<input id="bk_web" tabindex="-1" autocomplete="off"></label></div>' +
-          '<label class="chk"><input type="checkbox" id="bk_rem" checked> Send me a confirmation and reminders (the day before and an hour before) by text or email. Msg &amp; data rates may apply; reply STOP to opt out.</label>' +
+          '<label class="chk"><input type="checkbox" id="bk_rem"> <span>Yes, text me a booking confirmation and reminders (the day before and an hour before) from Journey-HVAC at the phone number above. Up to 3 texts per booking. Msg &amp; data rates may apply. Reply HELP for help, STOP to opt out. Not required to book. <a href="/privacy.html" target="_blank">Privacy Policy</a> · <a href="/terms.html" target="_blank">Terms</a></span></label>' +
           '<button class="btn solid wide" id="bk_go"' + (state.slot ? '' : ' disabled') + '>Book my demo</button><div class="msg" id="bk_msg"></div></form>';
       }
       right.querySelector('#bk_go').addEventListener('click', submit);
