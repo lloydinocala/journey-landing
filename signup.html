@@ -49,6 +49,7 @@
     </div>
   </div>
 
+  <div id="refBanner" style="display:none;margin-top:20px;padding:12px 16px;border-radius:12px;background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46;font-weight:600"></div>
   <div class="panel" style="margin-top:20px">
     <h3>About you and your company</h3>
     <form class="fm" id="f1" onsubmit="return false" autocomplete="on">
@@ -87,6 +88,24 @@
 
 <script src="/hub.js"></script>
 <script>
+  // "Refer a shop" link: journey-hvac.com/signup?ref=CODE. Kept for 60 days so it still counts if they come back later.
+  var REF = (function () {
+    var m = /[?&]ref=([A-Za-z0-9]{4,12})/.exec(location.search), now = Date.now();
+    try {
+      if (m) { localStorage.setItem('journey_ref', JSON.stringify({ code: m[1].toUpperCase(), at: now })); return m[1].toUpperCase(); }
+      var s = JSON.parse(localStorage.getItem('journey_ref') || 'null');
+      if (s && now - s.at < 60 * 864e5) return s.code;
+    } catch (e) {}
+    return m ? m[1].toUpperCase() : '';
+  })();
+  if (REF) {
+    fetch('https://gatndtsmjrxdgxquvydw.supabase.co/functions/v1/referral-hub', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'lookup', code: REF }) })
+      .then(function (r) { return r.json(); }).then(function (d) {
+        if (!d || !d.ok || d.program !== 'shop' || !d.referrer) return;
+        var el = document.getElementById('refBanner');
+        if (el) { el.textContent = '🎁 Referred by ' + d.referrer + ' — your referral is saved with your sign-up.'; el.style.display = 'block'; }
+      }).catch(function () {});
+  }
   // Same pricing as the home page. Monthly = set price; 1-yr = 15% off; annual = 25% off; rounded to $5.
   var PRICES = { starter: { solo: 99 }, growing: { t1: 199, t2: 249, t3: 349 }, ambitious: { t1: 299, t2: 349, t3: 499 } };
   var PLANS = [
@@ -133,7 +152,7 @@
   document.getElementById('go1').addEventListener('click', function () {
     var body = { action: 'signup', name: v('u_name'), title: v('u_title'), company: v('u_company'), email: v('u_email'), phone: v('u_phone'), city: v('u_city'), software: v('u_sw'), language: v('u_lang'), message: v('u_msg'), website: v('u_web'),
       plan: (PLANS.filter(function (p) { return p.key === st.plan; })[0] || {}).name, team: TEAM_LABEL[st.team], billing: BILL_LABEL[st.bill],
-      addons: [].map.call(document.querySelectorAll('.addons input:checked'), function (x) { return x.value; }) };
+      addons: [].map.call(document.querySelectorAll('.addons input:checked'), function (x) { return x.value; }), ref: REF };
     if (!body.name || !body.company) return err('Please enter your name and company name.');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(body.email)) return err('Please enter a valid email.');
     if (body.phone.replace(/\D/g, '').length < 10) return err('Please enter a 10-digit phone number.');
